@@ -1,0 +1,6 @@
+<Modules>
+  <Module PersistentId="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50" ModuleId="Stixter.Plexi" />
+  <Module PersistentId="83F02894-8743-4553-BDEC-242CBC222475" ModuleId="Stixter.Plexi.ScreenManager" />
+  <Module PersistentId="40E43671-35A5-4472-982A-C19D9C33F6A4" ModuleId="Stixter.Plexi.Sprites" />
+  <Module PersistentId="5F86BB74-D7F2-4359-805B-D9C8EA3F9109" ModuleId="Stixter.Plexi.GameScreens" />
+</Modules>

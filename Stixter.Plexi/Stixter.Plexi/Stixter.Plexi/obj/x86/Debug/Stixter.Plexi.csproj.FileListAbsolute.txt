@@ -1,0 +1,14 @@
+D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Stixter.Plexi.exe
+D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Stixter.Plexi.pdb
+D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\obj\x86\Debug\Stixter.Plexi.exe
+D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\obj\x86\Debug\Stixter.Plexi.pdb
+D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\menufont.xnb
+D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Stixter.Plexi.ScreenManager.dll
+D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Stixter.Plexi.ScreenManager.pdb
+D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\greenmetal.xnb
+D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\glass-background.xnb
+D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\alienmetal.xnb
+D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Wet-Glass.xnb
+D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\wateronglass.xnb
