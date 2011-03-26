@@ -1,0 +1,134 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:Class1.cs" caret="341" fromTop="9" />
+      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:Program.cs" caret="108" fromTop="5" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:Menu/f:MenuItems.cs" caret="30" fromTop="0" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="939" fromTop="28" />
+      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:PlexiGame.cs" caret="4371" fromTop="17" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:StartScreen.cs" caret="1732" fromTop="16" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:Menu/f:MenuComponent.cs" caret="3268" fromTop="21" />
+      <File id="008B2E72-4436-4FD9-BB78-1653B45B4FE8/f:menufont.spritefont" caret="678" fromTop="19" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:GameScreen.cs" caret="415" fromTop="12" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:GameScreen.cs" caret="865" fromTop="21" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:GameScreen.cs" caret="591" fromTop="10" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:GameScreen.cs" caret="1874" fromTop="18" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:GameScreen.cs" caret="1879" fromTop="28" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:GameScreen.cs" caret="2271" fromTop="28" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:GameScreen.cs" caret="1357" fromTop="21" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:GameScreen.cs" caret="1494" fromTop="24" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:StartScreen.cs" caret="465" fromTop="16" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:StartScreen.cs" caret="1480" fromTop="28" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:StartScreen.cs" caret="806" fromTop="13" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="574" fromTop="20" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="703" fromTop="23" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="1127" fromTop="28" />
+      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:PlexiGame.cs" caret="2350" fromTop="27" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:Menu/f:MenuComponent.cs" caret="3176" fromTop="3" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:Menu/f:MenuComponent.cs" caret="3176" fromTop="26" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:StartScreen.cs" caret="1585" fromTop="8" />
+      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:PlexiGame.cs" caret="4167" fromTop="28" />
+      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:PlexiGame.cs" caret="3809" fromTop="11" />
+      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:PlexiGame.cs" caret="3798" fromTop="10" />
+      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:PlexiGame.cs" caret="3813" fromTop="28" />
+      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:PlexiGame.cs" caret="3979" fromTop="28" />
+      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:PlexiGame.cs" caret="912" fromTop="17" />
+      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:PlexiGame.cs" caret="2014" fromTop="15" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:StartScreen.cs" caret="426" fromTop="14" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:StartScreen.cs" caret="1337" fromTop="25" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:StartScreen.cs" caret="1732" fromTop="16" />
+      <File id="008B2E72-4436-4FD9-BB78-1653B45B4FE8/f:menufont.spritefont" caret="529" fromTop="13" />
+      <File id="008B2E72-4436-4FD9-BB78-1653B45B4FE8/f:menufont.spritefont" caret="678" fromTop="19" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:GameScreen.cs" caret="399" fromTop="12" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="SpriteSortMode`0" priority="0" />
+      <Item value="BlendState`0" priority="1" />
+      <Item value="SpriteFont`0" priority="0" />
+      <Item value="Draw`0" priority="0" />
+      <Item value="SpriteBatch`0" priority="0" />
+      <Item value="spriteBatch" priority="1" />
+      <Item value="BackToFront" priority="0" />
+      <Item value="blendState" priority="0" />
+      <Item value="if" priority="1" />
+      <Item value="_keyboardState" priority="0" />
+      <Item value="Concat`1" priority="0" />
+      <Item value="Contains`1" priority="0" />
+      <Item value="Keys`0" priority="0" />
+      <Item value="_slectedColor" priority="1" />
+      <Item value="Color`0" priority="0" />
+      <Item value="_selectedIndex" priority="2" />
+      <Item value="private" priority="0" />
+      <Item value="int" priority="0" />
+      <Item value="_lastSelectedIndex" priority="0" />
+      <Item value="SelectedIndex" priority="0" />
+      <Item value="tint" priority="0" />
+      <Item value="_notSelectedColor" priority="0" />
+      <Item value="Enum`0" priority="0" />
+      <Item value="MenuItems`0" priority="5" />
+      <Item value="List" priority="1" />
+      <Item value="new" priority="2" />
+      <Item value="List&lt;MenuItem&gt;" priority="1" />
+      <Item value="GameScreen`0" priority="1" />
+      <Item value="KeyboardState`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.Xna.Framework.Graphics.SpriteSortMode">
+      <Item value="BackToFront" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.Xna.Framework.Graphics.BlendState">
+      <Item value="AlphaBlend" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Microsoft.Xna.Framework.Graphics.SpriteBatch">
+      <Item value="Begin`0" priority="0" />
+      <Item value="End`0" priority="0" />
+      <Item value="DrawString`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Microsoft.Xna.Framework.Input.KeyboardState">
+      <Item value="GetPressedKeys`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.Xna.Framework.Input.Keys">
+      <Item value="Enter" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.Xna.Framework.Color">
+      <Item value="Red" priority="0" />
+      <Item value="Black" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Stixter.Plexi.ScreenManager.MenuItems">
+      <Item value="MenuItem`0" priority="5" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Stixter.Plexi.ScreenManager.MenuItems+MenuItem">
+      <Item value="StartGame" priority="0" />
+      <Item value="Help" priority="0" />
+      <Item value="HighScore" priority="0" />
+      <Item value="EndGame" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
+      <Item value="Count" priority="4" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Stixter.Plexi.ScreenManager.MenuItems+MenuItem">
+      <Item value="ToString`0" priority="1" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>
