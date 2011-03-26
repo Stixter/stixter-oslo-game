@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Stixter.Plexi.Sprites.Sprites;
 
 namespace Stixter.Plexi.ScreenManager.Menu
 {
@@ -20,6 +21,7 @@ namespace Stixter.Plexi.ScreenManager.Menu
         private Vector2 _position;
         private float _width = 0f;
         private float _height = 0f;
+        private MenuSelectedItem _menuSelectedItem;
 
         public int SelectedIndex
         {
@@ -41,6 +43,7 @@ namespace Stixter.Plexi.ScreenManager.Menu
             _spriteFont = spriteFont;
             _menuItems = menuItems;
             MeasureMenu();
+           // _menuSelectedItem = new MenuSelectedItem();
         }
 
         private void MeasureMenu()
@@ -52,8 +55,9 @@ namespace Stixter.Plexi.ScreenManager.Menu
                 var size = _spriteFont.MeasureString(item.ToString());
                 if (size.X > _width)
                     _width = size.X;
-                _height += _spriteFont.LineSpacing + 5;
+                _height += _spriteFont.LineSpacing + 50;
             }
+
             _position = new Vector2(
                 (Game.Window.ClientBounds.Width - _width) / 2, 
                 (Game.Window.ClientBounds.Height - _height) / 2);
@@ -110,7 +114,7 @@ namespace Stixter.Plexi.ScreenManager.Menu
                                  : _notSelectedColor;
 
                 _spriteBatch.DrawString(_spriteFont, MenuItems.GetLabelFromItem(_menuItems[i]), location,color);
-                location.Y += _spriteFont.LineSpacing + 5;
+                location.Y += _spriteFont.LineSpacing + 30;
             }
         }
 

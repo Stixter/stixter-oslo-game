@@ -7,8 +7,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\menufont.xnb</Output>
-      <Time>2011-03-26T11:38:43.0434341+01:00</Time>
+      <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\menufont.xnb</Output>
+      <Time>2011-03-26T12:17:03.9104049+01:00</Time>
     </Item>
     <Item>
       <Source>greenmetal.jpg</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\greenmetal.xnb</Output>
-      <Time>2011-03-26T10:32:34.1396665+01:00</Time>
+      <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\greenmetal.xnb</Output>
+      <Time>2011-03-26T12:17:03.8954041+01:00</Time>
     </Item>
     <Item>
       <Source>glass-background.jpg</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\glass-background.xnb</Output>
-      <Time>2011-03-26T10:32:41.9411127+01:00</Time>
+      <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\glass-background.xnb</Output>
+      <Time>2011-03-26T12:17:03.9084048+01:00</Time>
     </Item>
     <Item>
       <Source>alienmetal.jpg</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\alienmetal.xnb</Output>
-      <Time>2011-03-26T11:01:20.0381439+01:00</Time>
+      <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\alienmetal.xnb</Output>
+      <Time>2011-03-26T12:17:03.9234057+01:00</Time>
     </Item>
     <Item>
       <Source>Wet-Glass.jpg</Source>
@@ -43,8 +43,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Wet-Glass.xnb</Output>
-      <Time>2011-03-26T11:37:54.0356311+01:00</Time>
+      <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Wet-Glass.xnb</Output>
+      <Time>2011-03-26T12:17:03.9014044+01:00</Time>
     </Item>
     <Item>
       <Source>wateronglass.jpg</Source>
@@ -52,8 +52,26 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\wateronglass.xnb</Output>
-      <Time>2011-03-26T11:41:48.8210365+01:00</Time>
+      <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\wateronglass.xnb</Output>
+      <Time>2011-03-26T12:17:03.9164053+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\menu_back_notselected.jpg</Source>
+      <Name>Sprites\menu_back_notselected</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Sprites\menu_back_notselected.xnb</Output>
+      <Time>2011-03-26T12:36:59.8538385+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\menu_back_selected.jpg</Source>
+      <Name>Sprites\menu_back_selected</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Sprites\menu_back_selected.xnb</Output>
+      <Time>2011-03-26T12:36:59.8558386+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -61,10 +79,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.PlexiContent\</RootDirectory>
-      <LoggerRootDirectory>D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\</LoggerRootDirectory>
-      <IntermediateDirectory>D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.PlexiContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.PlexiContent\</RootDirectory>
+      <LoggerRootDirectory>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\</LoggerRootDirectory>
+      <IntermediateDirectory>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.PlexiContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

@@ -99,7 +99,12 @@
     <Compile Include="Menu\MenuItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Stixter.Plexi.Sprites\Stixter.Plexi.Sprites.csproj">
+      <Project>{40E43671-35A5-4472-982A-C19D9C33F6A4}</Project>
+      <Name>Stixter.Plexi.Sprites</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

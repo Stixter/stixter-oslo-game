@@ -1,1 +1,2 @@
 D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.PlexiContent\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.PlexiContent\obj\x86\Debug\ResolveAssemblyReference.cache
