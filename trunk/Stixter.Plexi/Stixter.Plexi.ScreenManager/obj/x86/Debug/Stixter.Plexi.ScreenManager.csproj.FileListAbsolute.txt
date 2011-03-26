@@ -4,3 +4,11 @@ D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi.ScreenManager\obj\x86\Debug\Resol
 D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi.ScreenManager\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi.ScreenManager\obj\x86\Debug\Stixter.Plexi.ScreenManager.dll
 D:\dev\Plexi\trunk\Stixter.Plexi\Stixter.Plexi.ScreenManager\obj\x86\Debug\Stixter.Plexi.ScreenManager.pdb
+D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi.ScreenManager\bin\x86\Debug\Stixter.Plexi.ScreenManager.dll
+D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi.ScreenManager\bin\x86\Debug\Stixter.Plexi.ScreenManager.pdb
+D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi.ScreenManager\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi.ScreenManager\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi.ScreenManager\obj\x86\Debug\Stixter.Plexi.ScreenManager.dll
+D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi.ScreenManager\obj\x86\Debug\Stixter.Plexi.ScreenManager.pdb
+D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi.ScreenManager\bin\x86\Debug\Stixter.Plexi.Sprites.dll
+D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi.ScreenManager\bin\x86\Debug\Stixter.Plexi.Sprites.pdb
