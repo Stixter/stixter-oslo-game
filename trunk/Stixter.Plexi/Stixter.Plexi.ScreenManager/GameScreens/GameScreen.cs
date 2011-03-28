@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Stixter.Plexi.ScreenManager.GameScreens
@@ -9,17 +11,19 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         readonly List<GameComponent> _components = new List<GameComponent>();
         protected Game CurrentGame;
         protected SpriteBatch SpriteBatch;
+        protected ContentManager ContentManager;
 
         public List<GameComponent> Components
         {
             get { return _components; }
         }
 
-        protected GameScreen(Game game, SpriteBatch spriteBatch)
+        protected GameScreen(ContentManager contentManager, Game game, SpriteBatch spriteBatch)
             : base(game)
         {
             CurrentGame = game;
             SpriteBatch = spriteBatch;
+            ContentManager = contentManager;
         }
 
         public override void Initialize()

@@ -8,7 +8,7 @@
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
       <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\menufont.xnb</Output>
-      <Time>2011-03-26T12:17:03.9104049+01:00</Time>
+      <Time>2011-03-29T00:32:30.7493042+02:00</Time>
     </Item>
     <Item>
       <Source>greenmetal.jpg</Source>
@@ -56,22 +56,31 @@
       <Time>2011-03-26T12:17:03.9164053+01:00</Time>
     </Item>
     <Item>
-      <Source>Sprites\menu_back_notselected.jpg</Source>
-      <Name>Sprites\menu_back_notselected</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Sprites\menu_back_notselected.xnb</Output>
-      <Time>2011-03-26T12:36:59.8538385+01:00</Time>
-    </Item>
-    <Item>
       <Source>Sprites\menu_back_selected.jpg</Source>
       <Name>Sprites\menu_back_selected</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Sprites\menu_back_selected.xnb</Output>
+      <Time>2011-03-26T12:36:59.8538385+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\menu_back_notselected.jpg</Source>
+      <Name>Sprites\menu_back_notselected</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Sprites\menu_back_notselected.xnb</Output>
       <Time>2011-03-26T12:36:59.8558386+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\player.jpg</Source>
+      <Name>Sprites\player</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Sprites\player.xnb</Output>
+      <Time>2011-03-29T01:39:04.4134098+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

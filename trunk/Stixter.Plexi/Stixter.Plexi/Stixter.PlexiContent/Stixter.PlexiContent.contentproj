@@ -84,13 +84,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Sprites\menu_back_selected.jpg">
+      <Name>menu_back_selected</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Compile Include="Sprites\menu_back_notselected.jpg">
       <Name>menu_back_notselected</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="Sprites\menu_back_selected.jpg">
-      <Name>menu_back_selected</Name>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprites\player.jpg">
+      <Name>player</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
