@@ -30,3 +30,4 @@ D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86
 D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Sprites\menu_back_selected.xnb
 D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Stixter.Plexi.Sprites.dll
 D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Stixter.Plexi.Sprites.pdb
+D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Sprites\player.xnb

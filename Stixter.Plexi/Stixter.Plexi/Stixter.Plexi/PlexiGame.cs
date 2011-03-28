@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Stixter.Plexi.ScreenManager.GameScreens;
+using Stixter.Plexi.Sprites.Sprites;
 
 namespace Stixter.Plexi
 {
@@ -10,11 +11,12 @@ namespace Stixter.Plexi
     {
         GraphicsDeviceManager _graphics;
         SpriteBatch _spriteBatch;
-        KeyboardState _oldKeyboardState;
+        private KeyboardState _oldKeyboardState;
+        private KeyboardState _keyboardState;
         GameScreen _activeScreen;
         StartScreen _startScreen;
         ActionScreen _actionScreen;
-        private KeyboardState _keyboardState;
+        
 
         public PlexiGame()
         {
@@ -42,14 +44,24 @@ namespace Stixter.Plexi
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            _startScreen = new StartScreen(this, _spriteBatch, Content.Load<SpriteFont>("menufont"), Content.Load<Texture2D>("wateronglass"));
+
+            SetScreenSize();
+
+            _startScreen = new StartScreen(Content, this, _spriteBatch, Content.Load<SpriteFont>("menufont"), Content.Load<Texture2D>("wateronglass"));
             Components.Add(_startScreen);
             _startScreen.Hide();
-            _actionScreen = new ActionScreen( this, _spriteBatch, Content.Load<Texture2D>("greenmetal"));
+            _actionScreen = new ActionScreen(Content, this, _spriteBatch, Content.Load<Texture2D>("greenmetal"));
             Components.Add(_actionScreen);
             _actionScreen.Hide();
             _activeScreen = _startScreen;
             _activeScreen.Show();
+        }
+
+        private void SetScreenSize()
+        {
+            _graphics.PreferredBackBufferWidth = 1280;
+            _graphics.PreferredBackBufferHeight = 720;
+            _graphics.ApplyChanges();
         }
 
         /// <summary>
@@ -58,7 +70,7 @@ namespace Stixter.Plexi
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            Content.Unload();
         }
 
         /// <summary>
@@ -122,10 +134,9 @@ namespace Stixter.Plexi
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            _spriteBatch.Begin(SpriteSortMode.Texture, BlendState.AlphaBlend);
+            _spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
             base.Draw(gameTime);
             _spriteBatch.End();
-
         }
     }
 }

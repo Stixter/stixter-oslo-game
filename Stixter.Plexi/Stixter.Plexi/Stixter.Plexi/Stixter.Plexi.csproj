@@ -120,6 +120,10 @@
       <Project>{83F02894-8743-4553-BDEC-242CBC222475}</Project>
       <Name>Stixter.Plexi.ScreenManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Stixter.Plexi.Sprites\Stixter.Plexi.Sprites.csproj">
+      <Project>{40E43671-35A5-4472-982A-C19D9C33F6A4}</Project>
+      <Name>Stixter.Plexi.Sprites</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Stixter.PlexiContent\Stixter.PlexiContent.contentproj">
       <Name>Stixter.PlexiContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>

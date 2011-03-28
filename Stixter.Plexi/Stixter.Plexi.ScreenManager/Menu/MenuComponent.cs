@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Stixter.Plexi.Sprites;
 using Stixter.Plexi.Sprites.Sprites;
 
 namespace Stixter.Plexi.ScreenManager.Menu
@@ -21,7 +23,8 @@ namespace Stixter.Plexi.ScreenManager.Menu
         private Vector2 _position;
         private float _width = 0f;
         private float _height = 0f;
-        private MenuSelectedItem _menuSelectedItem;
+        private ContentManager _contentManager;
+        private MenuBackgroundItem _menuBackgroundItem;
 
         public int SelectedIndex
         {
@@ -36,14 +39,16 @@ namespace Stixter.Plexi.ScreenManager.Menu
             }
         }
 
-        public MenuComponent(Game game, SpriteBatch spriteBatch, SpriteFont spriteFont, List<MenuItems.MenuItem> menuItems)
+        public MenuComponent(ContentManager contentManager, Game game, SpriteBatch spriteBatch, SpriteFont spriteFont, List<MenuItems.MenuItem> menuItems)
             : base(game)
         {
             _spriteBatch = spriteBatch;
             _spriteFont = spriteFont;
             _menuItems = menuItems;
+            _contentManager = contentManager;
             MeasureMenu();
-           // _menuSelectedItem = new MenuSelectedItem();
+            _menuBackgroundItem = new MenuBackgroundItem(contentManager);
+            _menuBackgroundItem.Sprite.Alive = true;
         }
 
         private void MeasureMenu()
@@ -103,9 +108,14 @@ namespace Stixter.Plexi.ScreenManager.Menu
 
         public override void Draw(GameTime gameTime)
         {
+            
+
             base.Draw(gameTime);
 
             var location = _position;
+            var boxLocation = _position;
+            boxLocation.X = location.X + 80f;
+            boxLocation.Y = location.Y + 15f;
             
             for (var i = 0; i < _menuItems.Count; i++)
             {
@@ -113,8 +123,18 @@ namespace Stixter.Plexi.ScreenManager.Menu
                                  ? _slectedColor 
                                  : _notSelectedColor;
 
-                _spriteBatch.DrawString(_spriteFont, MenuItems.GetLabelFromItem(_menuItems[i]), location,color);
+                _menuBackgroundItem.Sprite.Position = boxLocation;
+
+                if (i == _selectedIndex)
+                    _menuBackgroundItem.SetSelected();
+                else
+                    _menuBackgroundItem.SetNotSelected();
+
+                _menuBackgroundItem.Draw(_spriteBatch);
+                _spriteBatch.DrawString(_spriteFont, MenuItems.GetLabelFromItem(_menuItems[i]), location, color);
                 location.Y += _spriteFont.LineSpacing + 30;
+                boxLocation.Y += _spriteFont.LineSpacing + 30;
+                
             }
         }
 
