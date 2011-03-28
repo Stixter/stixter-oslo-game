@@ -8,18 +8,18 @@
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:Program.cs" caret="108" fromTop="5" />
       <File id="83F02894-8743-4553-BDEC-242CBC222475/d:Menu/f:MenuItems.cs" caret="30" fromTop="0" />
-      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="939" fromTop="28" />
-      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:StartScreen.cs" caret="1732" fromTop="16" />
-      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:GameScreen.cs" caret="415" fromTop="12" />
       <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:AnimatedSprite.cs" caret="380" fromTop="13" />
       <File id="008B2E72-4436-4FD9-BB78-1653B45B4FE8/f:menufont.spritefont" caret="849" fromTop="25" />
       <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:GameSprite.cs" caret="311" fromTop="11" />
       <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:MenuSelectedItem.cs" caret="458" fromTop="16" />
       <File id="d:Miscellaneous Files/f:GameScreen.cs/l:D!?dev?AimHunt?AimHunt?Screens?GameScreen.cs" caret="3842" fromTop="28" />
       <File id="83F02894-8743-4553-BDEC-242CBC222475/d:Menu/f:MenuComponent.cs" caret="1636" fromTop="25" />
-      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:PlexiGame.cs" caret="522" fromTop="6" />
+      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:Program.cs" caret="0" fromTop="0" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="0" fromTop="0" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:StartScreen.cs" caret="0" fromTop="0" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:GameScreen.cs" caret="0" fromTop="0" />
+      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:PlexiGame.cs" caret="4497" fromTop="23" />
     </RecentFiles>
     <RecentEdits>
       <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:PlexiGame.cs" caret="3979" fromTop="28" />
