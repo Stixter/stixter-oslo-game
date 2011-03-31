@@ -53,7 +53,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\wateronglass.xnb</Output>
-      <Time>2011-03-26T12:17:03.9164053+01:00</Time>
+      <Time>2011-03-31T23:52:00.2609409+02:00</Time>
     </Item>
     <Item>
       <Source>Sprites\menu_back_selected.jpg</Source>
@@ -74,13 +74,40 @@
       <Time>2011-03-26T12:36:59.8558386+01:00</Time>
     </Item>
     <Item>
-      <Source>Sprites\player.jpg</Source>
+      <Source>Levels\level1_background.jpg</Source>
+      <Name>Levels\level1_background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Levels\level1_background.xnb</Output>
+      <Time>2011-03-31T22:51:30.1291623+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\player.png</Source>
       <Name>Sprites\player</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Sprites\player.xnb</Output>
-      <Time>2011-03-29T01:39:04.4134098+02:00</Time>
+      <Time>2011-03-31T23:11:29.7379403+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\player_move.png</Source>
+      <Name>Sprites\player_move</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Sprites\player_move.xnb</Output>
+      <Time>2011-04-01T00:59:43.4343263+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Sprites\DuckHuntSheet1.png</Source>
+      <Name>Sprites\DuckHuntSheet1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Sprites\DuckHuntSheet1.xnb</Output>
+      <Time>2010-01-09T02:50:33.9309098+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

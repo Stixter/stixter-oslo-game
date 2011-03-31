@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -13,16 +14,16 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         private readonly Rectangle _imageRectangle;
         private Player _player;
         private KeyboardState _oldKeyboardState;
+        private readonly Random random = new Random();
+        private int _playerDirection = 0;
 
         public ActionScreen(ContentManager contentManager, Game game, SpriteBatch spriteBatch, Texture2D image)
             : base(contentManager, game, spriteBatch)
         {
             _image = image;
             _imageRectangle = new Rectangle(0, 0, Game.Window.ClientBounds.Width, Game.Window.ClientBounds.Height);
-
-            _player = new Player(contentManager);
-            _player.Sprite.Position.Y = 100f;
-            _player.Sprite.Position.X = 200f;
+            var graphicsService = Game.Services.GetService(typeof(IGraphicsDeviceService)) as IGraphicsDeviceService;
+            _player = new Player(contentManager, graphicsService.GraphicsDevice, random);
         }
 
         public override void Update(GameTime gameTime)
@@ -31,19 +32,27 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
 
             if (_keyboardState.IsKeyDown(Keys.Right))
             {
-                _player.Sprite.Position.X = _player.Sprite.Position.X + 4f;
+                _player.MoveEnemy(0);
+                _playerDirection = 1;
+
             }
-            if (_keyboardState.IsKeyDown(Keys.Left))
+            else if (_keyboardState.IsKeyDown(Keys.Left))
             {
-                _player.Sprite.Position.X = _player.Sprite.Position.X - 4f;
+                _player.MoveEnemy(1);
+                _playerDirection = 0;
             }
-            if (_keyboardState.IsKeyDown(Keys.Up))
+            else if (_keyboardState.IsKeyDown(Keys.Up))
             {
-                _player.Sprite.Position.Y = _player.Sprite.Position.Y - 4f;
+                _player.MoveEnemy(2);
             }
-            if (_keyboardState.IsKeyDown(Keys.Down))
+            else if (_keyboardState.IsKeyDown(Keys.Down))
             {
-                _player.Sprite.Position.Y = _player.Sprite.Position.Y + 4f;
+                _player.MoveEnemy(3);
+            }
+            else
+            {
+                _player.MoveEnemy(4);
+                _playerDirection = 2;   
             }
             _oldKeyboardState = _keyboardState;
             base.Update(gameTime);
@@ -53,6 +62,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         public override void Draw(GameTime gameTime)
         {
             SpriteBatch.Draw(_image, _imageRectangle, Color.White);
+            _player.UpdatePlayer(gameTime, _playerDirection);
             _player.Draw(SpriteBatch);
             base.Draw(gameTime);
         }

@@ -6,4 +6,7 @@ Content\Wet-Glass.xnb
 Content\wateronglass.xnb
 Content\Sprites\menu_back_selected.xnb
 Content\Sprites\menu_back_notselected.xnb
+Content\Levels\level1_background.xnb
 Content\Sprites\player.xnb
+Content\Sprites\player_move.xnb
+Content\Sprites\DuckHuntSheet1.xnb

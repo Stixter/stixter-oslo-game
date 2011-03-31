@@ -50,7 +50,7 @@ namespace Stixter.Plexi
             _startScreen = new StartScreen(Content, this, _spriteBatch, Content.Load<SpriteFont>("menufont"), Content.Load<Texture2D>("wateronglass"));
             Components.Add(_startScreen);
             _startScreen.Hide();
-            _actionScreen = new ActionScreen(Content, this, _spriteBatch, Content.Load<Texture2D>("greenmetal"));
+            _actionScreen = new ActionScreen(Content, this, _spriteBatch, Content.Load<Texture2D>("Levels\\level1_background"));
             Components.Add(_actionScreen);
             _actionScreen.Hide();
             _activeScreen = _startScreen;
@@ -62,6 +62,7 @@ namespace Stixter.Plexi
             _graphics.PreferredBackBufferWidth = 1280;
             _graphics.PreferredBackBufferHeight = 720;
             _graphics.ApplyChanges();
+            _graphics.ToggleFullScreen();
         }
 
         /// <summary>

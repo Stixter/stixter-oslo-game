@@ -31,3 +31,6 @@ D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86
 D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Stixter.Plexi.Sprites.dll
 D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Stixter.Plexi.Sprites.pdb
 D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Sprites\player.xnb
+D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Levels\level1_background.xnb
+D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Sprites\player_move.xnb
+D:\dev\stixter-oslo-game\trunk\Stixter.Plexi\Stixter.Plexi\Stixter.Plexi\bin\x86\Debug\Content\Sprites\DuckHuntSheet1.xnb
