@@ -30,28 +30,39 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         {
             _keyboardState = Keyboard.GetState();
 
+            bool jumping = false;
+
+            var keys = _keyboardState.GetPressedKeys();
+
+            foreach (Keys keyse in keys)
+            {
+                if(keyse == Keys.Space)
+                {
+                    jumping = true;
+                }
+            }
+
             if (_keyboardState.IsKeyDown(Keys.Right))
             {
-                _player.MoveEnemy(0);
+                _player.MoveEnemy(0, jumping);
                 _playerDirection = 1;
-
             }
             else if (_keyboardState.IsKeyDown(Keys.Left))
             {
-                _player.MoveEnemy(1);
+                _player.MoveEnemy(1, jumping);
                 _playerDirection = 0;
             }
             else if (_keyboardState.IsKeyDown(Keys.Up))
             {
-                _player.MoveEnemy(2);
+                _player.MoveEnemy(2, jumping);
             }
             else if (_keyboardState.IsKeyDown(Keys.Down))
             {
-                _player.MoveEnemy(3);
+                _player.MoveEnemy(3, jumping);
             }
             else
             {
-                _player.MoveEnemy(4);
+                _player.MoveEnemy(4, jumping);
                 _playerDirection = 2;   
             }
             _oldKeyboardState = _keyboardState;

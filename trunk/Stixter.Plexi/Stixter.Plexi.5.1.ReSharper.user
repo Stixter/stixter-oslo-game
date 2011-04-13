@@ -3,6 +3,7 @@
     <string />
     <integer />
     <boolean>
+      <setting name="livetemplates.csharp.usevar">False</setting>
       <setting name="SolutionAnalysisEnabled">False</setting>
     </boolean>
   </SettingsComponent>
@@ -13,47 +14,47 @@
       <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:GameScreen.cs" caret="816" fromTop="14" />
       <File id="008B2E72-4436-4FD9-BB78-1653B45B4FE8/f:menufont.spritefont" caret="695" fromTop="21" />
       <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:GameSprite.cs" caret="701" fromTop="23" />
-      <File id="d:Miscellaneous Files/f:PlayerAim.cs/l:D!?dev?AimHunt?AimHunt?GameObjects?PlayerAim.cs" caret="1613" fromTop="22" />
       <File id="83F02894-8743-4553-BDEC-242CBC222475/d:Menu/f:MenuItems.cs" caret="0" fromTop="0" />
-      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:StartScreen.cs" caret="2031" fromTop="16" />
       <File id="83F02894-8743-4553-BDEC-242CBC222475/d:Menu/f:MenuComponent.cs" caret="4214" fromTop="61" />
       <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:MenuBackgroundItem.cs" caret="696" fromTop="7" />
-      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="1953" fromTop="22" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="1592" fromTop="4" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:AnimatedSprite.cs" caret="2054" fromTop="60" />
-      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:PlexiGame.cs" caret="2062" fromTop="15" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:StartScreen.cs" caret="2031" fromTop="16" />
+      <File id="d:Miscellaneous Files/f:PlayerAim.cs/l:D!?dev?AimHunt?AimHunt?GameObjects?PlayerAim.cs" caret="1613" fromTop="22" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:AnimatedSprite.cs" caret="1140" fromTop="30" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="1996" fromTop="33" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="4188" fromTop="34" />
+      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:PlexiGame.cs" caret="2110" fromTop="18" />
     </RecentFiles>
     <RecentEdits>
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="1974" fromTop="28" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="1830" fromTop="10" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="1940" fromTop="14" />
-      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="1174" fromTop="12" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:AnimatedSprite.cs" caret="3013" fromTop="17" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="1663" fromTop="10" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:AnimatedSprite.cs" caret="700" fromTop="22" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:AnimatedSprite.cs" caret="3013" fromTop="21" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:AnimatedSprite.cs" caret="3013" fromTop="25" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:AnimatedSprite.cs" caret="3013" fromTop="19" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:AnimatedSprite.cs" caret="3013" fromTop="23" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:AnimatedSprite.cs" caret="1068" fromTop="14" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="612" fromTop="9" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="2119" fromTop="23" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:AnimatedSprite.cs" caret="1615" fromTop="19" />
-      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="635" fromTop="16" />
-      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="1453" fromTop="14" />
-      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="2327" fromTop="18" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:AnimatedSprite.cs" caret="594" fromTop="19" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="1570" fromTop="23" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="1938" fromTop="16" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:AnimatedSprite.cs" caret="1068" fromTop="14" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:AnimatedSprite.cs" caret="1950" fromTop="8" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:AnimatedSprite.cs" caret="2968" fromTop="28" />
-      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="1489" fromTop="7" />
-      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="1656" fromTop="12" />
-      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="1782" fromTop="16" />
-      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="2001" fromTop="23" />
-      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/f:AnimatedSprite.cs" caret="1823" fromTop="14" />
-      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:PlexiGame.cs" caret="2353" fromTop="24" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="1032" fromTop="21" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="2394" fromTop="12" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="4576" fromTop="21" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="3403" fromTop="22" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="3558" fromTop="24" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="3588" fromTop="26" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="308" fromTop="10" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="4444" fromTop="20" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="4922" fromTop="31" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="2257" fromTop="7" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="4444" fromTop="22" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="4350" fromTop="18" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="2091" fromTop="11" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="1555" fromTop="19" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="1707" fromTop="25" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="1883" fromTop="30" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="2057" fromTop="25" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="2194" fromTop="29" />
+      <File id="83F02894-8743-4553-BDEC-242CBC222475/d:GameScreens/f:ActionScreen.cs" caret="2290" fromTop="33" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="3864" fromTop="16" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="3230" fromTop="28" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="3062" fromTop="23" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="3401" fromTop="35" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="827" fromTop="8" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="3982" fromTop="30" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="3022" fromTop="25" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="2997" fromTop="26" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="2785" fromTop="18" />
+      <File id="40E43671-35A5-4472-982A-C19D9C33F6A4/d:Sprites/f:Player.cs" caret="4188" fromTop="34" />
+      <File id="DC3CDE4C-3E4E-4DF5-A6EC-A3B62E0B3D50/f:PlexiGame.cs" caret="2324" fromTop="24" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -77,27 +78,27 @@
       <Item value="spriteBatch" priority="1" />
       <Item value="BackToFront" priority="0" />
       <Item value="blendState" priority="0" />
-      <Item value="if" priority="11" />
-      <Item value="_keyboardState" priority="1" />
+      <Item value="if" priority="38" />
+      <Item value="_keyboardState" priority="5" />
       <Item value="Concat`1" priority="0" />
       <Item value="Contains`1" priority="0" />
-      <Item value="Keys`0" priority="1" />
+      <Item value="Keys`0" priority="6" />
       <Item value="_slectedColor" priority="2" />
       <Item value="Color`0" priority="1" />
       <Item value="_selectedIndex" priority="2" />
-      <Item value="private" priority="13" />
-      <Item value="int" priority="9" />
+      <Item value="private" priority="23" />
+      <Item value="int" priority="11" />
       <Item value="_lastSelectedIndex" priority="0" />
       <Item value="SelectedIndex" priority="0" />
       <Item value="tint" priority="0" />
       <Item value="_notSelectedColor" priority="0" />
-      <Item value="Enum`0" priority="0" />
+      <Item value="Enum`0" priority="1" />
       <Item value="MenuItems`0" priority="5" />
       <Item value="List" priority="1" />
       <Item value="new" priority="13" />
       <Item value="List&lt;MenuItem&gt;" priority="1" />
       <Item value="GameScreen`0" priority="1" />
-      <Item value="KeyboardState`0" priority="1" />
+      <Item value="KeyboardState`0" priority="2" />
       <Item value="Position" priority="0" />
       <Item value="_menuSelectedItem" priority="16" />
       <Item value="MenuSelectedItem" priority="2" />
@@ -113,22 +114,22 @@
       <Item value="_coMenuSelectedItem" priority="0" />
       <Item value="_contentManager" priority="4" />
       <Item value="SpriteBatch" priority="3" />
-      <Item value="true" priority="3" />
-      <Item value="false" priority="0" />
+      <Item value="true" priority="9" />
+      <Item value="false" priority="6" />
       <Item value="Vector2" priority="1" />
       <Item value="Vector2`0" priority="1" />
       <Item value="graphicsService" priority="2" />
-      <Item value="public" priority="3" />
+      <Item value="public" priority="4" />
       <Item value="texture2D" priority="1" />
       <Item value="_sprite" priority="4" />
       <Item value="GameSprite" priority="0" />
       <Item value="_spriteFont" priority="0" />
-      <Item value="float" priority="0" />
+      <Item value="float" priority="5" />
       <Item value="ContentManager" priority="0" />
       <Item value="protected" priority="0" />
       <Item value="MenuSelectedItem`0" priority="0" />
       <Item value="_position" priority="1" />
-      <Item value="var" priority="0" />
+      <Item value="var" priority="1" />
       <Item value="boxLocation" priority="1" />
       <Item value="location" priority="1" />
       <Item value="texture" priority="0" />
@@ -139,22 +140,45 @@
       <Item value="_notSelectedTexture" priority="1" />
       <Item value="_selectedTexture" priority="0" />
       <Item value="i" priority="0" />
-      <Item value="else" priority="3" />
+      <Item value="else" priority="20" />
       <Item value="PlayerIndex`0" priority="0" />
-      <Item value="_player" priority="6" />
+      <Item value="_player" priority="7" />
       <Item value="Player" priority="0" />
       <Item value="Equals`0" priority="0" />
       <Item value="_playerPosition" priority="2" />
       <Item value="positionThree" priority="0" />
-      <Item value="const" priority="0" />
+      <Item value="const" priority="1" />
       <Item value="postionFour" priority="0" />
-      <Item value="sprite" priority="4" />
-      <Item value="direction" priority="4" />
+      <Item value="sprite" priority="10" />
+      <Item value="direction" priority="7" />
       <Item value="interface" priority="1" />
       <Item value="Direction" priority="2" />
       <Item value="directionCord" priority="1" />
       <Item value="PlaneIntersectionType`0" priority="2" />
-      <Item value="_playerDirection" priority="2" />
+      <Item value="_playerDirection" priority="3" />
+      <Item value="keys" priority="0" />
+      <Item value="bool" priority="5" />
+      <Item value="foreach" priority="1" />
+      <Item value="keyse" priority="5" />
+      <Item value="KeyState`0" priority="0" />
+      <Item value="containsSpace" priority="1" />
+      <Item value="forward" priority="0" />
+      <Item value="Keyboard`0" priority="0" />
+      <Item value="enum" priority="0" />
+      <Item value="State`0" priority="1" />
+      <Item value="PlayerDirection`0" priority="3" />
+      <Item value="Right" priority="1" />
+      <Item value="_lastplayerDirection" priority="2" />
+      <Item value="Left" priority="1" />
+      <Item value="_currentPlayerDirection" priority="7" />
+      <Item value="_currentVelocity" priority="13" />
+      <Item value="MaxEnemyVelocity" priority="0" />
+      <Item value="None" priority="2" />
+      <Item value="jumping" priority="4" />
+      <Item value="_jumpingVelocity" priority="4" />
+      <Item value="_hitMaxJump" priority="3" />
+      <Item value="_hitLowJump" priority="3" />
+      <Item value="_jumpingSpeed" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@Microsoft.Xna.Framework.Graphics.SpriteSortMode">
       <Item value="BackToFront" priority="0" />
@@ -171,14 +195,16 @@
       <Item value="Draw`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Microsoft.Xna.Framework.Input.KeyboardState">
-      <Item value="GetPressedKeys`0" priority="1" />
-      <Item value="IsKeyDown`0" priority="0" />
+      <Item value="GetPressedKeys`0" priority="5" />
+      <Item value="IsKeyDown`0" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@Microsoft.Xna.Framework.Input.Keys">
       <Item value="Enter" priority="0" />
       <Item value="Left" priority="2" />
       <Item value="Up" priority="1" />
       <Item value="Down" priority="0" />
+      <Item value="Space" priority="2" />
+      <Item value="Right" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@Microsoft.Xna.Framework.Color">
       <Item value="Red" priority="0" />
@@ -202,7 +228,7 @@
     </ItemStatistics>
     <ItemStatistics item="Qualified:Stixter.Plexi.Sprites.AnimatedSprite">
       <Item value="Sprite" priority="0" />
-      <Item value="Position" priority="3" />
+      <Item value="Position" priority="8" />
       <Item value="SourceRect" priority="0" />
       <Item value="Rotation" priority="0" />
       <Item value="Center" priority="0" />
@@ -234,15 +260,23 @@
       <Item value="Unload`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Microsoft.Xna.Framework.Vector2">
-      <Item value="Y" priority="6" />
+      <Item value="Y" priority="11" />
       <Item value="X" priority="7" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:Stixter.Plexi.Sprites.Sprites.Player">
       <Item value="Draw`0" priority="0" />
       <Item value="Sprite" priority="3" />
+      <Item value="MoveEnemy`0" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Int32">
-      <Item value="Equals`0" priority="5" />
+      <Item value="Equals`0" priority="6" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Microsoft.Xna.Framework.Input.Keyboard">
+      <Item value="GetState`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@Stixter.Plexi.Sprites.Sprites.Player+PlayerDirection">
+      <Item value="Left" priority="0" />
+      <Item value="None" priority="0" />
     </ItemStatistics>
   </CompletionStatisticsManager>
 </Configuration>
