@@ -35,7 +35,7 @@ namespace Stixter.Plexi
 
             SetScreenSize();
 
-            _startScreen = new StartScreen(Content, this, _spriteBatch, Content.Load<SpriteFont>("menufont"), Content.Load<Texture2D>("wateronglass"));
+            _startScreen = new StartScreen(Content, this, _spriteBatch, Content.Load<SpriteFont>("menufont"), Content.Load<Texture2D>("splash_screen"));
             Components.Add(_startScreen);
             _startScreen.Hide();
             _actionScreen = new ActionScreen(Content, this, _spriteBatch, Content.Load<Texture2D>("Levels\\level1_background"));
