@@ -16,6 +16,7 @@ namespace Stixter.Plexi.Sprites.Sprites
         private readonly GraphicsDevice _graphicsDevice;
         private Rectangle _viewportRect;
         private readonly Random _random;
+        private bool jumpIsInProgress = false;
 
         const float MaxEnemyHeight = 0.1f;
         const float MinEnemyHeight = 0.8f;
@@ -84,14 +85,9 @@ namespace Stixter.Plexi.Sprites.Sprites
                 Sprite.Position.X = Sprite.Position.X - _currentVelocity;
             }
 
-            if(Jumping)
-                JumpingHandler();
-
-           
-
-            if (Jumping)
+            if (Jumping || jumpIsInProgress)
             {
-                Sprite.Position.Y = Sprite.Position.Y - _jumpingVelocity;
+                JumpingHandler();
             }
             else
             {
@@ -99,20 +95,21 @@ namespace Stixter.Plexi.Sprites.Sprites
                 if (_jumpingVelocity < 0)
                 {
                     _jumpingVelocity = 0;
+                    
                 }
                 Sprite.Position.Y = Sprite.Position.Y - _jumpingVelocity - 1.0f;
             }
 
-
             _lastplayerDirection = direction;
-
 
             Jumping = false;
             Sprite.Alive = true;
         }
 
+
         private void JumpingHandler()
         {
+            jumpIsInProgress = true;
             if(_hitLowJump)
                 _jumpingVelocity = _jumpingVelocity + _jumpingSpeed;
                     
@@ -123,9 +120,9 @@ namespace Stixter.Plexi.Sprites.Sprites
             {
                 _jumpingSpeed = 4.0f;
             }
-            else
+            else if (_jumpingVelocity < 170.0f)
             {
-                _jumpingSpeed = 8.0f;
+                _jumpingSpeed = 7.0f;
             }
 
             if (_jumpingVelocity > 180.0f)
@@ -136,10 +133,11 @@ namespace Stixter.Plexi.Sprites.Sprites
             if(_jumpingVelocity < 0)
             {
                 _hitLowJump = true;
+                jumpIsInProgress = false;
                 _hitMaxJump = false;
             }
 
-            
+            Sprite.Position.Y = Sprite.Position.Y - _jumpingVelocity;
         }
 
         private void SetCurrentDirection(PlayerDirection direction)
