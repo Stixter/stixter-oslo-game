@@ -119,7 +119,7 @@ namespace Stixter.Plexi.Sprites.Sprites
             if (_hitMaxJump)
                 _jumpingVelocity = _jumpingVelocity - _jumpingSpeed + 1.0f;
 
-            if (_jumpingVelocity > 170.0f)//
+            if (_jumpingVelocity > 170.0f)
             {
                 _jumpingSpeed = 4.0f;
             }
