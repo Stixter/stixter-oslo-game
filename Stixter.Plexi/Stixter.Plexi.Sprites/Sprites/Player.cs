@@ -8,10 +8,11 @@ namespace Stixter.Plexi.Sprites.Sprites
     public class Player
     {
         public enum State { Walking, Jumping }
-        public enum PlayerDirection {Left, Right, None}
+        public enum PlayerDirection {Left, Right, Up, Down, None}
 
         private readonly ContentManager _contentManager;
         public AnimatedSprite Sprite;
+        public bool Jumping;
         private readonly GraphicsDevice _graphicsDevice;
         private Rectangle _viewportRect;
         private readonly Random _random;
@@ -58,7 +59,7 @@ namespace Stixter.Plexi.Sprites.Sprites
             Sprite = new AnimatedSprite(_contentManager.Load<Texture2D>("Sprites\\player_move"));
         }
 
-        public void MoveEnemy(int direction, bool jumping)
+        public void MoveEnemy(PlayerDirection direction)
         {
             Sprite.Position.Y = 612f;
 
@@ -74,39 +75,7 @@ namespace Stixter.Plexi.Sprites.Sprites
                 _currentVelocity = 0;
             }
 
-
-            if(jumping)
-            {
-                if(_hitLowJump)
-                    _jumpingVelocity = _jumpingVelocity + _jumpingSpeed;
-                    
-                if (_hitMaxJump)
-                    _jumpingVelocity = _jumpingVelocity - _jumpingSpeed + 1.0f;
-
-                if (_jumpingVelocity > 170.0f)
-                {
-                    _jumpingSpeed = 4.0f;
-                }
-                else
-                {
-                    _jumpingSpeed = 8.0f;
-                }
-
-                if (_jumpingVelocity > 180.0f)
-                {
-                    _hitMaxJump = true;
-                    _hitLowJump = false;
-                }
-                if(_jumpingVelocity < 0)
-                {
-                    _hitLowJump = true;
-                    _hitMaxJump = false;
-                }
-                
-            }
-            
-
-            if(_currentPlayerDirection == PlayerDirection.Right)
+            if (_currentPlayerDirection == PlayerDirection.Right)
             {
                 Sprite.Position.X = Sprite.Position.X + _currentVelocity;
             }
@@ -115,8 +84,12 @@ namespace Stixter.Plexi.Sprites.Sprites
                 Sprite.Position.X = Sprite.Position.X - _currentVelocity;
             }
 
+            if(Jumping)
+                JumpingHandler();
 
-            if (jumping)
+           
+
+            if (Jumping)
             {
                 Sprite.Position.Y = Sprite.Position.Y - _jumpingVelocity;
             }
@@ -130,34 +103,48 @@ namespace Stixter.Plexi.Sprites.Sprites
                 Sprite.Position.Y = Sprite.Position.Y - _jumpingVelocity - 1.0f;
             }
 
-            if (direction == 0)
-            {
-                _lastplayerDirection = PlayerDirection.Right;
-            }
-            else
-            {
-                _lastplayerDirection = PlayerDirection.Left;
-            }
+
+            _lastplayerDirection = direction;
 
 
-
+            Jumping = false;
             Sprite.Alive = true;
         }
 
-        private void SetCurrentDirection(int direction)
+        private void JumpingHandler()
         {
-            if(direction == 0)
+            if(_hitLowJump)
+                _jumpingVelocity = _jumpingVelocity + _jumpingSpeed;
+                    
+            if (_hitMaxJump)
+                _jumpingVelocity = _jumpingVelocity - _jumpingSpeed + 1.0f;
+
+            if (_jumpingVelocity > 170.0f)
             {
-                _currentPlayerDirection = PlayerDirection.Right;
-            }
-            else if (direction == 1)
-            {
-                _currentPlayerDirection = PlayerDirection.Left;
+                _jumpingSpeed = 4.0f;
             }
             else
             {
-                _currentPlayerDirection = PlayerDirection.None;
+                _jumpingSpeed = 8.0f;
             }
+
+            if (_jumpingVelocity > 180.0f)
+            {
+                _hitMaxJump = true;
+                _hitLowJump = false;
+            }
+            if(_jumpingVelocity < 0)
+            {
+                _hitLowJump = true;
+                _hitMaxJump = false;
+            }
+
+            
+        }
+
+        private void SetCurrentDirection(PlayerDirection direction)
+        {
+            _currentPlayerDirection = direction;
         }
 
         public void UpdatePlayer(GameTime gameTime, int direction)
