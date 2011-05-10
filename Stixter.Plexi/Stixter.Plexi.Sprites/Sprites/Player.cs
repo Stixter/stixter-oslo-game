@@ -15,7 +15,6 @@ namespace Stixter.Plexi.Sprites.Sprites
         public AnimatedSprite Sprite;
         private readonly GraphicsDevice _graphicsDevice;
         private Rectangle _viewportRect;
-        private readonly Random _random;
         public State PlayerState;
         private double _currentTimer;
         private double _startJumpTime;
@@ -27,12 +26,13 @@ namespace Stixter.Plexi.Sprites.Sprites
         public bool AllowJump;
         private PlayerDirection _lastplayerDirection;
         private PlayerDirection _currentPlayerDirection;
+        private string _texture;
    
-        public Player(ContentManager contentManager, GraphicsDevice graphicsDevice, Random random)
+        public Player(ContentManager contentManager, GraphicsDevice graphicsDevice, string texture)
         {
+            _texture = texture;
             _contentManager = contentManager;
             _graphicsDevice = graphicsDevice;
-            _random = random;
 
             CreateViewportRec();
             CreateGameObject();
@@ -65,7 +65,7 @@ namespace Stixter.Plexi.Sprites.Sprites
 
         private void CreateGameObject()
         {
-            Sprite = new AnimatedSprite(_contentManager.Load<Texture2D>("Sprites\\player_move"));
+            Sprite = new AnimatedSprite(_contentManager.Load<Texture2D>(_texture));
         }
 
         public void HitFloor(float posY)

@@ -20,7 +20,7 @@ namespace Stixter.Plexi.Sprites.Sprites
         {
             return new Rectangle(
                        (int)Sprite.Position.X,
-                       (int)Sprite.Position.Y,
+                       (int)Sprite.Position.Y - 20,
                        Sprite.Sprite.Width,
                        Sprite.Sprite.Height - 40);
         }

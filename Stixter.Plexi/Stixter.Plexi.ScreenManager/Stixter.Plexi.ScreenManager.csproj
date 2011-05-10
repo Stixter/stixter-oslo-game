@@ -94,6 +94,7 @@
   <ItemGroup>
     <Compile Include="GameScreens\ActionScreen.cs" />
     <Compile Include="GameScreens\GameScreen.cs" />
+    <Compile Include="GameScreens\PlatformHelper.cs" />
     <Compile Include="GameScreens\StartScreen.cs" />
     <Compile Include="Menu\MenuComponent.cs" />
     <Compile Include="Menu\MenuItems.cs" />
