@@ -22,7 +22,7 @@ namespace Stixter.Plexi.Sprites.Sprites
                        (int)Sprite.Position.X,
                        (int)Sprite.Position.Y,
                        Sprite.Sprite.Width,
-                       Sprite.Sprite.Height - 70);
+                       Sprite.Sprite.Height - 40);
         }
 
         private void CreateObject()
