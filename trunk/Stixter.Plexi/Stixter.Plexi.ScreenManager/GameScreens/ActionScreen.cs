@@ -52,14 +52,10 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         {
             _keyboardState = Keyboard.GetState();
 
-            var keys = _keyboardState.GetPressedKeys();
-            
-            foreach (Keys keyse in keys)
+            foreach (var key in _keyboardState.GetPressedKeys())
             {
-                if(keyse == Keys.Space)
-                {
-                    _player.Jumping = true;
-                }
+                if (key == Keys.Space)
+                    _player.PlayerState = Player.State.Jumping;
             }
 
             if (_keyboardState.IsKeyDown(Keys.Right))
@@ -72,7 +68,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
                 _player.MoveEnemy(Player.PlayerDirection.Left);
                 _playerDirection = 0;
             }
-            else if (_keyboardState.IsKeyDown(Keys.Up))
+            else if (_keyboardState.IsKeyDown(Keys.Space))
             {
                 _player.MoveEnemy(Player.PlayerDirection.Up);
             }
@@ -85,33 +81,34 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
                 _player.MoveEnemy(Player.PlayerDirection.None);
                 _playerDirection = 2;   
             }
+
             _oldKeyboardState = _keyboardState;
 
-            if(CheckHit(_floorItems))
-            {
-                _player.HitFloor(_hitFloat);
-     
-            }
-            else
-            {
+            CheckPlatformHit();
 
-            }
-
-            //if (CheckHit(_platformItems))
-            //{
-            //    _player.HitFloor(_hitFloat);
-            //}
-            //else
-            //{
-        
-            //}
             base.Update(gameTime);
             
         }
 
+        private void CheckPlatformHit()
+        {
+            if(CheckHit(_floorItems))
+            {
+                _player.HitFloor(_hitFloat);
+            }
+            else if (CheckHit(_platformItems))
+            {
+                _player.HitFloor(_hitFloat);
+            }
+            else
+            {
+                _player.AllowJump = false;
+            }
+        }
+
         public bool CheckHit(IList<Floor> floors)
         {
-            var playerAimRect = _player.GetPlayerHit();
+            var playerAimRect = _player.PlayerFootHit();
 
             foreach (var floor in floors)
             {
@@ -119,6 +116,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
                 if (playerAimRect.Intersects(enemyRec))
                 {
                     _hitFloat = floor.Sprite.Position.Y - 85;
+                    _player.AllowJump = true;
                     return true;
                 }
             }

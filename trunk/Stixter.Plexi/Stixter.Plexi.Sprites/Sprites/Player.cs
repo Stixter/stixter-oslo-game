@@ -13,33 +13,26 @@ namespace Stixter.Plexi.Sprites.Sprites
 
         private readonly ContentManager _contentManager;
         public AnimatedSprite Sprite;
-        public bool Jumping;
         private readonly GraphicsDevice _graphicsDevice;
         private Rectangle _viewportRect;
         private readonly Random _random;
-        private State _currentState;
-
-        const float MaxEnemyHeight = 0.1f;
-        const float MinEnemyHeight = 0.8f;
-        const float MaxEnemyVelocity = 6.0f;
+        public State PlayerState;
+        private double _currentTimer;
+        private double _startJumpTime;
+        const double TimeInAir = 0.5;
+        const float MaxEnemyVelocity = 8.0f;
+        private bool _jumpInProgress;
         private float _currentVelocity = 1.0f;
-        private float _jumpingVelocity;
-        private float _jumpingSpeed = 7.0f;
-        private bool _hitMaxJump;
-        private bool _hitLowJump = true;
-
-       
-
         private float _lastPlayerY;
-
+        public bool AllowJump;
         private PlayerDirection _lastplayerDirection;
         private PlayerDirection _currentPlayerDirection;
    
         public Player(ContentManager contentManager, GraphicsDevice graphicsDevice, Random random)
         {
-            this._contentManager = contentManager;
-            this._graphicsDevice = graphicsDevice;
-            this._random = random;
+            _contentManager = contentManager;
+            _graphicsDevice = graphicsDevice;
+            _random = random;
 
             CreateViewportRec();
             CreateGameObject();
@@ -48,12 +41,12 @@ namespace Stixter.Plexi.Sprites.Sprites
             Sprite.Position.X = 400f;
         }
 
-        public Rectangle GetPlayerHit()
+        public Rectangle PlayerFootHit()
         {
             return new Rectangle(
-                       (int)Sprite.Position.X,
+                       (int)Sprite.Position.X + 50,
                        (int)Sprite.Position.Y,
-                       Sprite.Sprite.Width - 100,
+                       Sprite.Sprite.Width - 180,
                        Sprite.Sprite.Height - 200);
         }
 
@@ -77,8 +70,11 @@ namespace Stixter.Plexi.Sprites.Sprites
 
         public void HitFloor(float posY)
         {
-            //_currentState = State.Walking;
-            Sprite.Position.Y = posY;
+            if (!_jumpInProgress)
+            {
+                Sprite.Position.Y = posY;
+                _lastPlayerY = Sprite.Position.Y;
+            }
         }
 
         public void MoveEnemy(PlayerDirection direction)
@@ -88,15 +84,20 @@ namespace Stixter.Plexi.Sprites.Sprites
             SetCurrentDirection(direction);
             SetCorretSpeedOnPlayer();
             MovePlayerLeftOrRight();
-            JumpingHandler();
 
+            if (PlayerState.Equals(State.Jumping) && AllowJump)
+                Jump();
+ 
             _lastplayerDirection = direction;
 
-            
-            if(!_currentState.Equals(State.Jumping))
-                _lastPlayerY = Sprite.Position.Y;
+            if(!_jumpInProgress)
+                Sprite.Position.Y = _lastPlayerY + 5.0f;
+            else
+                Sprite.Position.Y = _lastPlayerY - 5.0f;
 
-            Jumping = false;
+            _lastPlayerY = Sprite.Position.Y;
+
+            PlayerState = State.Walking;
             Sprite.Alive = true;
             
         }
@@ -106,7 +107,7 @@ namespace Stixter.Plexi.Sprites.Sprites
             if((_lastplayerDirection == _currentPlayerDirection))
             {
                 if(_currentVelocity < MaxEnemyVelocity)
-                    _currentVelocity = _currentVelocity + 0.05f;
+                    _currentVelocity = _currentVelocity + 0.07f;
             }
             else
                 _currentVelocity = 0;
@@ -121,59 +122,13 @@ namespace Stixter.Plexi.Sprites.Sprites
                 Sprite.Position.X = Sprite.Position.X - _currentVelocity;
         }
 
-        private void JumpingHandler()
+        private void Jump()
         {
-            if (Jumping || (_currentState == State.Jumping))
+            if(!_jumpInProgress)
             {
-                DoJump();
+                _jumpInProgress = true;
+                _startJumpTime = _currentTimer;
             }
-            else
-            {
-                _jumpingVelocity = _jumpingVelocity - _jumpingSpeed;
-
-                if (_jumpingVelocity < 0)
-                    _jumpingVelocity = 0;
-
-
-                Sprite.Position.Y = _lastPlayerY + 2.0f;
-                
-                SpritePosition.KeepSpriteOnScreen(Sprite, _graphicsDevice);
-            }
-        }
-
-        private void DoJump()
-        {
-            _currentState = State.Jumping;
-
-            if(_hitLowJump)
-                _jumpingVelocity = _jumpingVelocity + _jumpingSpeed;
-                    
-            if (_hitMaxJump)
-                _jumpingVelocity = _jumpingVelocity - _jumpingSpeed + 1.0f;
-
-            if (_jumpingVelocity > 230.0f)
-            {
-                _jumpingSpeed = 4.0f;
-            }
-            else if (_jumpingVelocity < 230.0f)
-            {
-                _jumpingSpeed = 7.0f;
-            }
-
-            if (_jumpingVelocity > 250.0f)
-            {
-                _hitMaxJump = true;
-                _hitLowJump = false;
-            }
-            if(_jumpingVelocity < 0)
-            {
-                _hitLowJump = true;
-                _currentState = State.Walking;
-                _hitMaxJump = false;
-            }
-
-            Sprite.Position.Y = Sprite.Position.Y - _jumpingVelocity;
-            SpritePosition.KeepSpriteOnScreen(Sprite, _graphicsDevice);
         }
 
         private void SetCurrentDirection(PlayerDirection direction)
@@ -185,6 +140,17 @@ namespace Stixter.Plexi.Sprites.Sprites
         {
             Sprite.UpdateSprite(gameTime, direction);
             SpritePosition.KeepSpriteOnScreen(Sprite, _graphicsDevice);
+            
+            _currentTimer = gameTime.TotalGameTime.TotalSeconds;
+
+            if(_jumpInProgress)
+                CheckIfStillJumping();
+        }
+
+        private void CheckIfStillJumping()
+        {
+            var timeDiffrent = _currentTimer - _startJumpTime;
+            _jumpInProgress = timeDiffrent <= TimeInAir;
         }
 
         public void Draw(SpriteBatch spriteBatch)
