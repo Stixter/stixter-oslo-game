@@ -39,15 +39,15 @@ namespace Stixter.Plexi.ScreenManager.Menu
             }
         }
 
-        public MenuComponent(ContentManager contentManager, Game game, SpriteBatch spriteBatch, SpriteFont spriteFont, List<MenuItems.MenuItem> menuItems)
+        public MenuComponent(Game game, SpriteBatch spriteBatch, SpriteFont spriteFont, List<MenuItems.MenuItem> menuItems)
             : base(game)
         {
             _spriteBatch = spriteBatch;
             _spriteFont = spriteFont;
             _menuItems = menuItems;
-            _contentManager = contentManager;
+            _contentManager = game.Content;
             MeasureMenu();
-            _menuBackgroundItem = new MenuBackgroundItem(contentManager);
+            _menuBackgroundItem = new MenuBackgroundItem(game.Content);
             _menuBackgroundItem.Sprite.Alive = true;
         }
 

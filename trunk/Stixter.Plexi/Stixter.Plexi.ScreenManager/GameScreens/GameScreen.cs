@@ -18,12 +18,12 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             get { return _components; }
         }
 
-        protected GameScreen(ContentManager contentManager, Game game, SpriteBatch spriteBatch)
+        protected GameScreen(Game game, SpriteBatch spriteBatch)
             : base(game)
         {
             CurrentGame = game;
             SpriteBatch = spriteBatch;
-            ContentManager = contentManager;
+            ContentManager = game.Content;
         }
 
         public override void Initialize()

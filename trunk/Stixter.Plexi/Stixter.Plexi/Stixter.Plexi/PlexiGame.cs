@@ -32,13 +32,13 @@ namespace Stixter.Plexi
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
+       
             SetScreenSize();
 
-            _startScreen = new StartScreen(Content, this, _spriteBatch, Content.Load<SpriteFont>("menufont"), Content.Load<Texture2D>("splash_screen"));
+            _startScreen = new StartScreen(this, _spriteBatch, Content.Load<SpriteFont>("menufont"), Content.Load<Texture2D>("splash_screen"));
             Components.Add(_startScreen);
             _startScreen.Hide();
-            _actionScreen = new ActionScreen(Content, this, _spriteBatch, Content.Load<Texture2D>("Levels\\level1_background"));
+            _actionScreen = new ActionScreen(this, _spriteBatch, Content.Load<Texture2D>("Levels\\level1_background"));
             Components.Add(_actionScreen);
             _actionScreen.Hide();
             _activeScreen = _startScreen;

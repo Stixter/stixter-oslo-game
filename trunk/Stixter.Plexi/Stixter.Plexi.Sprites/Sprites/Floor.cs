@@ -4,15 +4,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Stixter.Plexi.Sprites.Sprites
 {
-    public class Floor
+    public class Floor : GameComponent
     {
         private readonly ContentManager _contentManager;
         public GameSprite Sprite;
         private Texture2D _texture;
 
-        public Floor(ContentManager contentManager)
+        public Floor(Game game) : base(game)
         {
-            _contentManager = contentManager;
+            _contentManager = game.Content;
             CreateObject();
         }
 

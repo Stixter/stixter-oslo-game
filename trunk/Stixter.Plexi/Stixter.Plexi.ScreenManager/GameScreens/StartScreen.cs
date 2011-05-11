@@ -16,8 +16,8 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         private readonly Texture2D _image;
         private readonly Rectangle _imageRectangle;
 
-        public StartScreen(ContentManager contentManager, Game game, SpriteBatch spriteBatch, SpriteFont spriteFont, Texture2D image)
-            : base(contentManager, game, spriteBatch)
+        public StartScreen(Game game, SpriteBatch spriteBatch, SpriteFont spriteFont, Texture2D image)
+            : base(game, spriteBatch)
         {
             var menuItems = new List<MenuItems.MenuItem>
                                     {
@@ -27,7 +27,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
                                         MenuItems.MenuItem.EndGame
                                     };
 
-            _menuComponent = new MenuComponent(contentManager, game, spriteBatch, spriteFont, menuItems);
+            _menuComponent = new MenuComponent(game, spriteBatch, spriteFont, menuItems);
 
             
             Components.Add(_menuComponent);
@@ -36,18 +36,11 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             _imageRectangle = new Rectangle(0, 0, Game.Window.ClientBounds.Width, Game.Window.ClientBounds.Height);
         }
 
-
         public int SelectedIndex
         {
             get { return _menuComponent.SelectedIndex; }
             set { _menuComponent.SelectedIndex = value; }
         }
-
-        //public StartScreen(Game game, SpriteBatch spriteBatch, SpriteFont spriteFont, Texture2D image)
-        //    : base(game, spriteBatch)
-        //{
-       
-        //}
 
         public override void Update(GameTime gameTime)
         {

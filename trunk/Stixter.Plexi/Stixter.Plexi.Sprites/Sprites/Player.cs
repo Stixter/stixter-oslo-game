@@ -19,7 +19,7 @@ namespace Stixter.Plexi.Sprites.Sprites
         private double _currentTimer;
         private double _startJumpTime;
         const double TimeInAir = 0.5;
-        const float MaxEnemyVelocity = 8.0f;
+        const float MaxEnemyVelocity = 7.0f;
         private bool _jumpInProgress;
         private float _currentVelocity = 1.0f;
         private float _lastPlayerY;
@@ -28,11 +28,12 @@ namespace Stixter.Plexi.Sprites.Sprites
         private PlayerDirection _currentPlayerDirection;
         private string _texture;
    
-        public Player(ContentManager contentManager, GraphicsDevice graphicsDevice, string texture)
+        public Player(Game game, string texture)
         {
             _texture = texture;
-            _contentManager = contentManager;
-            _graphicsDevice = graphicsDevice;
+            _contentManager = game.Content;
+            var graphicsDeviceService = game.Services.GetService(typeof(IGraphicsDeviceService)) as IGraphicsDeviceService;
+            _graphicsDevice = graphicsDeviceService.GraphicsDevice;
 
             CreateViewportRec();
             CreateGameObject();
