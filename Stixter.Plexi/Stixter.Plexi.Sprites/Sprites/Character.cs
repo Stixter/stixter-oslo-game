@@ -6,11 +6,47 @@ using Stixter.Plexi.Sprites.Helpers;
 
 namespace Stixter.Plexi.Sprites.Sprites
 {
+    public class Enemy : Character
+    {
+        public Enemy(Game game, string texture) : base(game, texture)
+        {
+            MaxCharacterVelocity = 3.0f;
+            LastPlayerY = 10f;
+            Sprite.Position.X = 100f;
+        }
+
+        public void MoveCharacter()
+        {
+            Sprite.Position.Y = LastPlayerY;
+
+            SetCorretSpeedOnPlayer();
+
+            if (Sprite.Position.X >= 1000 && CurrentPlayerDirection == AnimatedSprite.PlayerDirection.Right)
+            {
+                CurrentPlayerDirection = AnimatedSprite.PlayerDirection.Left;
+            }
+            else if (Sprite.Position.X <= 10 && CurrentPlayerDirection == AnimatedSprite.PlayerDirection.Left)
+            {
+                CurrentPlayerDirection = AnimatedSprite.PlayerDirection.Right;
+            }
+
+            SetCorretSpeedOnPlayer();
+            MovePlayerLeftOrRight();
+            LastplayerDirection = CurrentPlayerDirection;
+
+            Sprite.Position.Y = LastPlayerY + 5.0f;
+            LastPlayerY = Sprite.Position.Y;
+            PlayerState = State.Walking;
+            Sprite.Alive = true;
+        }
+    }
     public class Player : Character
     {
         public Player(Game game, string texture) : base(game, texture)
         {
             MaxCharacterVelocity = 7.0f;
+            LastPlayerY = 312f;
+            Sprite.Position.X = 400f;
         }
 
         public void MoveCharacter(AnimatedSprite.PlayerDirection direction)
@@ -35,18 +71,17 @@ namespace Stixter.Plexi.Sprites.Sprites
 
             PlayerState = State.Walking;
             Sprite.Alive = true;
-
         }
     }
 
     public class Character : GameComponent
     {
         public enum State { Walking, Jumping }
-
+        public State PlayerState;
         public AnimatedSprite Sprite;
+
         private readonly GraphicsDevice _graphicsDevice;
         private Rectangle _viewportRect;
-        public State PlayerState;
         private double _currentTimer;
         private double _startJumpTime;
         const double TimeInAir = 0.5;
@@ -66,11 +101,7 @@ namespace Stixter.Plexi.Sprites.Sprites
             var graphicsDeviceService = Game.Services.GetService(typeof(IGraphicsDeviceService)) as IGraphicsDeviceService;
             _graphicsDevice = graphicsDeviceService.GraphicsDevice;
 
-            CreateViewportRec();
             CreateGameObject();
-
-            LastPlayerY = 312f;
-            Sprite.Position.X = 400f;
         }
 
         public Rectangle PlayerFootHit()
@@ -82,11 +113,13 @@ namespace Stixter.Plexi.Sprites.Sprites
                        Sprite.Sprite.Height - 200);
         }
 
-        private void CreateViewportRec()
+        public Rectangle CharacterKillingHit()
         {
-            _viewportRect = new Rectangle(0, 0,
-               _graphicsDevice.Viewport.Width,
-               _graphicsDevice.Viewport.Height);
+            return new Rectangle(
+                       (int)Sprite.Position.X + 50,
+                       (int)Sprite.Position.Y,
+                       Sprite.Sprite.Width - 180,
+                       Sprite.Sprite.Height - 200);
         }
 
         public Rectangle GetEnemyRec()

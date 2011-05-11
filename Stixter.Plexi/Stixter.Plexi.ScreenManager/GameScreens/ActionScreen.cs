@@ -15,11 +15,10 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         private readonly Texture2D _image;
         private readonly Rectangle _imageRectangle;
         private readonly Player _character;
+        private readonly Enemy _enemy;
 
         private List<Platform> _platforms;
         private KeyboardState _oldKeyboardState;
-
-        private int _playerDirection = 0;
 
         public ActionScreen(Game game, SpriteBatch spriteBatch, Texture2D image)
             : base(game, spriteBatch)
@@ -28,6 +27,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             _imageRectangle = new Rectangle(0, 0, Game.Window.ClientBounds.Width, Game.Window.ClientBounds.Height);
 
             _character = new Player(game, "Sprites\\player_move");
+            _enemy = new Enemy(game, "Sprites\\enemy_move");
 
             BuildPlatforms();
         }
@@ -52,6 +52,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             else
                 _character.MoveCharacter(AnimatedSprite.PlayerDirection.None);
 
+            _enemy.MoveCharacter();
             _oldKeyboardState = _keyboardState;
 
             CheckPlatformHit();
@@ -69,6 +70,11 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
                     _character.HitFloor(platform.CheckHit(_character));
                     playerHitAnyPlatform = true;
                 }
+
+                if (platform.CheckHit(_enemy) != 0)
+                {
+                    _enemy.HitFloor(platform.CheckHit(_enemy));
+                }
             }
 
             _character.AllowJump = playerHitAnyPlatform;
@@ -85,6 +91,9 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
 
             _character.UpdatePlayer(gameTime);
             _character.Draw(SpriteBatch);
+
+            _enemy.UpdatePlayer(gameTime);
+            _enemy.Draw(SpriteBatch);
 
             base.Draw(gameTime);
         }
