@@ -1,33 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Stixter.Plexi.Sprites.Sprites;
 
 namespace Stixter.Plexi.ScreenManager.GameScreens
 {
-    public class LevelHandler :GameComponent
+    public class LevelHandler : GameComponent
     {
-        private readonly Game _game;
         private readonly List<Platform> _platforms;
 
         public LevelHandler(Game game) : base(game)
         {
-            _game = game;
             _platforms = new List<Platform>();
             CreatePlatforms();
         }
 
         private void CreatePlatforms()
         {
-            _platforms.Add(new Platform(30, 700, 0, _game));
-            _platforms.Add(new Platform(5, 500, 200, _game));
-            _platforms.Add(new Platform(10, 300, 0, _game));
-            _platforms.Add(new Platform(5, 200, 100, _game));
-            _platforms.Add(new Platform(5, 500, 700, _game));
+            _platforms.Add(new Platform(30, 700, 0, Game));
+            _platforms.Add(new Platform(5, 500, 200, Game));
+            _platforms.Add(new Platform(10, 300, 0, Game));
+            _platforms.Add(new Platform(5, 200, 100, Game));
+            _platforms.Add(new Platform(5, 500, 700, Game));
         }
 
         public List<Platform> GetPlatformLevel1()
@@ -42,13 +36,9 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         private readonly int _postitionY;
         private readonly int _postitionX;
         private readonly List<Floor> _floorList;
-        private readonly ContentManager _contentManager;
-        private readonly Game _game;
 
         public Platform(int length, int positionY, int positionX, Game game) : base(game)
         {
-            _contentManager = game.Content;
-            _game = game;
             _lenght = length;
             _postitionY = positionY;
             _postitionX = positionX;
@@ -77,7 +67,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         {
             for (var i = 0; i < _lenght; i++)
             {
-                var floorItem = new Floor(_game);
+                var floorItem = new Floor(Game);
                 _floorList.Add(floorItem);
             }
         }

@@ -19,8 +19,9 @@ namespace Stixter.Plexi.Sprites
         public int SpriteWidth = 45; 
         public int SpriteHeight = 67;
         public Rectangle SourceRect;
-        private int _playerPosition = 0;
-        public int Direction = 0;
+        private int _playerPosition;
+        
+        public enum PlayerDirection {Left, Right, Up, Down, None}
 
         public AnimatedSprite(Texture2D loadTexture)
         {
@@ -33,7 +34,7 @@ namespace Stixter.Plexi.Sprites
             Alive = false;
         }
 
-        public Rectangle UpdateSprite(GameTime gameTime, int direction)
+        public Rectangle UpdateSprite(GameTime gameTime, PlayerDirection direction)
         {
             Timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             if (Timer > Interval)
@@ -46,11 +47,11 @@ namespace Stixter.Plexi.Sprites
                     const int positionThree = 100;
                     const int postionFour = 150;
 
-                    var directionCord = direction.Equals(0) ? 74 : 148;
+                    var directionCord = direction.Equals(PlayerDirection.Left) ? 74 : 148;
 
                     CurrentFrame = 0;
 
-                    if(direction.Equals(2))
+                    if(direction.Equals(PlayerDirection.None))
                     {
                         SourceRect = new Rectangle(100, 3, SpriteWidth, SpriteHeight);
                     }
@@ -78,13 +79,12 @@ namespace Stixter.Plexi.Sprites
                         if (_playerPosition.Equals(4))
                             _playerPosition = 0;
                     }
-                    
                 }
 
                 Timer = 0f;
             }
+
             return SourceRect;
-            
         }
     }
 }

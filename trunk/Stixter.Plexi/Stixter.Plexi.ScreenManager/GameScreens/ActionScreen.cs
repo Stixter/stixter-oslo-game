@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Stixter.Plexi.Sprites;
 using Stixter.Plexi.Sprites.Sprites;
 
 namespace Stixter.Plexi.ScreenManager.GameScreens
@@ -17,9 +18,8 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
 
         private List<Platform> _platforms;
         private KeyboardState _oldKeyboardState;
-        private readonly Random random = new Random();
+
         private int _playerDirection = 0;
-        private float _hitFloat = 0f;
 
         public ActionScreen(Game game, SpriteBatch spriteBatch, Texture2D image)
             : base(game, spriteBatch)
@@ -50,17 +50,17 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
 
             if (_keyboardState.IsKeyDown(Keys.Right))
             {
-                _player.MoveEnemy(Player.PlayerDirection.Right);
+                _player.MoveEnemy(AnimatedSprite.PlayerDirection.Right);
                 _playerDirection = 1;
             }
             else if (_keyboardState.IsKeyDown(Keys.Left))
             {
-                _player.MoveEnemy(Player.PlayerDirection.Left);
+                _player.MoveEnemy(AnimatedSprite.PlayerDirection.Left);
                 _playerDirection = 0;
             }
             else
             {
-                _player.MoveEnemy(Player.PlayerDirection.None);
+                _player.MoveEnemy(AnimatedSprite.PlayerDirection.None);
                 _playerDirection = 2;   
             }
 
