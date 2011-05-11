@@ -6,12 +6,10 @@ using Stixter.Plexi.Sprites.Helpers;
 
 namespace Stixter.Plexi.Sprites.Sprites
 {
-    public class Player
+    public class Player : GameComponent
     {
         public enum State { Walking, Jumping }
-        public enum PlayerDirection {Left, Right, Up, Down, None}
 
-        private readonly ContentManager _contentManager;
         public AnimatedSprite Sprite;
         private readonly GraphicsDevice _graphicsDevice;
         private Rectangle _viewportRect;
@@ -24,15 +22,15 @@ namespace Stixter.Plexi.Sprites.Sprites
         private float _currentVelocity = 1.0f;
         private float _lastPlayerY;
         public bool AllowJump;
-        private PlayerDirection _lastplayerDirection;
-        private PlayerDirection _currentPlayerDirection;
+        private AnimatedSprite.PlayerDirection _lastplayerDirection;
+        private AnimatedSprite.PlayerDirection _currentPlayerDirection;
         private string _texture;
    
-        public Player(Game game, string texture)
+        public Player(Game game, string texture) : base(game)
         {
             _texture = texture;
-            _contentManager = game.Content;
-            var graphicsDeviceService = game.Services.GetService(typeof(IGraphicsDeviceService)) as IGraphicsDeviceService;
+            
+            var graphicsDeviceService = Game.Services.GetService(typeof(IGraphicsDeviceService)) as IGraphicsDeviceService;
             _graphicsDevice = graphicsDeviceService.GraphicsDevice;
 
             CreateViewportRec();
@@ -66,7 +64,7 @@ namespace Stixter.Plexi.Sprites.Sprites
 
         private void CreateGameObject()
         {
-            Sprite = new AnimatedSprite(_contentManager.Load<Texture2D>(_texture));
+            Sprite = new AnimatedSprite(Game.Content.Load<Texture2D>(_texture));
         }
 
         public void HitFloor(float posY)
@@ -78,7 +76,7 @@ namespace Stixter.Plexi.Sprites.Sprites
             }
         }
 
-        public void MoveEnemy(PlayerDirection direction)
+        public void MoveEnemy(AnimatedSprite.PlayerDirection direction)
         {
             Sprite.Position.Y = _lastPlayerY;
 
@@ -116,10 +114,10 @@ namespace Stixter.Plexi.Sprites.Sprites
 
         private void MovePlayerLeftOrRight()
         {
-            if (_currentPlayerDirection == PlayerDirection.Right)
+            if (_currentPlayerDirection == AnimatedSprite.PlayerDirection.Right)
                 Sprite.Position.X = Sprite.Position.X + _currentVelocity;
 
-            if (_currentPlayerDirection == PlayerDirection.Left)
+            if (_currentPlayerDirection == AnimatedSprite.PlayerDirection.Left)
                 Sprite.Position.X = Sprite.Position.X - _currentVelocity;
         }
 
@@ -132,14 +130,14 @@ namespace Stixter.Plexi.Sprites.Sprites
             }
         }
 
-        private void SetCurrentDirection(PlayerDirection direction)
+        private void SetCurrentDirection(AnimatedSprite.PlayerDirection direction)
         {
             _currentPlayerDirection = direction;
         }
 
         public void UpdatePlayer(GameTime gameTime, int direction)
         {
-            Sprite.UpdateSprite(gameTime, direction);
+            Sprite.UpdateSprite(gameTime, _currentPlayerDirection);
             SpritePosition.KeepSpriteOnScreen(Sprite, _graphicsDevice);
             
             _currentTimer = gameTime.TotalGameTime.TotalSeconds;
