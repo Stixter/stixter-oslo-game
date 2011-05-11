@@ -6,7 +6,40 @@ using Stixter.Plexi.Sprites.Helpers;
 
 namespace Stixter.Plexi.Sprites.Sprites
 {
-    public class Player : GameComponent
+    public class Player : Character
+    {
+        public Player(Game game, string texture) : base(game, texture)
+        {
+            MaxCharacterVelocity = 7.0f;
+        }
+
+        public void MoveCharacter(AnimatedSprite.PlayerDirection direction)
+        {
+            Sprite.Position.Y = LastPlayerY;
+
+            SetCurrentDirection(direction);
+            SetCorretSpeedOnPlayer();
+            MovePlayerLeftOrRight();
+
+            if (PlayerState.Equals(State.Jumping) && AllowJump)
+                Jump();
+
+            LastplayerDirection = direction;
+
+            if (!JumpInProgress)
+                Sprite.Position.Y = LastPlayerY + 5.0f;
+            else
+                Sprite.Position.Y = LastPlayerY - 5.0f;
+
+            LastPlayerY = Sprite.Position.Y;
+
+            PlayerState = State.Walking;
+            Sprite.Alive = true;
+
+        }
+    }
+
+    public class Character : GameComponent
     {
         public enum State { Walking, Jumping }
 
@@ -17,16 +50,16 @@ namespace Stixter.Plexi.Sprites.Sprites
         private double _currentTimer;
         private double _startJumpTime;
         const double TimeInAir = 0.5;
-        const float MaxEnemyVelocity = 7.0f;
-        private bool _jumpInProgress;
-        private float _currentVelocity = 1.0f;
-        private float _lastPlayerY;
+        protected float MaxCharacterVelocity = 7.0f;
+        protected bool JumpInProgress;
+        protected float CurrentVelocity = 1.0f;
+        protected float LastPlayerY;
         public bool AllowJump;
-        private AnimatedSprite.PlayerDirection _lastplayerDirection;
-        private AnimatedSprite.PlayerDirection _currentPlayerDirection;
-        private string _texture;
+        protected AnimatedSprite.PlayerDirection LastplayerDirection;
+        protected AnimatedSprite.PlayerDirection CurrentPlayerDirection;
+        private readonly string _texture;
    
-        public Player(Game game, string texture) : base(game)
+        public Character(Game game, string texture) : base(game)
         {
             _texture = texture;
             
@@ -36,7 +69,7 @@ namespace Stixter.Plexi.Sprites.Sprites
             CreateViewportRec();
             CreateGameObject();
 
-            _lastPlayerY = 312f;
+            LastPlayerY = 312f;
             Sprite.Position.X = 400f;
         }
 
@@ -69,87 +102,62 @@ namespace Stixter.Plexi.Sprites.Sprites
 
         public void HitFloor(float posY)
         {
-            if (!_jumpInProgress)
+            if (!JumpInProgress)
             {
                 Sprite.Position.Y = posY;
-                _lastPlayerY = Sprite.Position.Y;
+                LastPlayerY = Sprite.Position.Y;
             }
         }
 
-        public void MoveEnemy(AnimatedSprite.PlayerDirection direction)
+        protected void SetCorretSpeedOnPlayer()
         {
-            Sprite.Position.Y = _lastPlayerY;
-
-            SetCurrentDirection(direction);
-            SetCorretSpeedOnPlayer();
-            MovePlayerLeftOrRight();
-
-            if (PlayerState.Equals(State.Jumping) && AllowJump)
-                Jump();
- 
-            _lastplayerDirection = direction;
-
-            if(!_jumpInProgress)
-                Sprite.Position.Y = _lastPlayerY + 5.0f;
-            else
-                Sprite.Position.Y = _lastPlayerY - 5.0f;
-
-            _lastPlayerY = Sprite.Position.Y;
-
-            PlayerState = State.Walking;
-            Sprite.Alive = true;
-            
-        }
-
-        private void SetCorretSpeedOnPlayer()
-        {
-            if((_lastplayerDirection == _currentPlayerDirection))
+            if((LastplayerDirection == CurrentPlayerDirection))
             {
-                if(_currentVelocity < MaxEnemyVelocity)
-                    _currentVelocity = _currentVelocity + 0.07f;
+                if(CurrentVelocity < MaxCharacterVelocity)
+                    CurrentVelocity = CurrentVelocity + 0.07f;
             }
             else
-                _currentVelocity = 0;
+                CurrentVelocity = 0;
         }
 
-        private void MovePlayerLeftOrRight()
+        protected void Jump()
         {
-            if (_currentPlayerDirection == AnimatedSprite.PlayerDirection.Right)
-                Sprite.Position.X = Sprite.Position.X + _currentVelocity;
-
-            if (_currentPlayerDirection == AnimatedSprite.PlayerDirection.Left)
-                Sprite.Position.X = Sprite.Position.X - _currentVelocity;
-        }
-
-        private void Jump()
-        {
-            if(!_jumpInProgress)
+            if(!JumpInProgress)
             {
-                _jumpInProgress = true;
+                JumpInProgress = true;
                 _startJumpTime = _currentTimer;
             }
         }
 
-        private void SetCurrentDirection(AnimatedSprite.PlayerDirection direction)
+        protected void MovePlayerLeftOrRight()
         {
-            _currentPlayerDirection = direction;
+            if (CurrentPlayerDirection == AnimatedSprite.PlayerDirection.Right)
+                Sprite.Position.X = Sprite.Position.X + CurrentVelocity;
+
+            if (CurrentPlayerDirection == AnimatedSprite.PlayerDirection.Left)
+                Sprite.Position.X = Sprite.Position.X - CurrentVelocity;
         }
 
-        public void UpdatePlayer(GameTime gameTime, int direction)
+        protected void SetCurrentDirection(AnimatedSprite.PlayerDirection direction)
         {
-            Sprite.UpdateSprite(gameTime, _currentPlayerDirection);
+            CurrentPlayerDirection = direction;
+        }
+
+        public void UpdatePlayer(GameTime gameTime)
+        {
+            Sprite.UpdateSprite(gameTime, CurrentPlayerDirection);
             SpritePosition.KeepSpriteOnScreen(Sprite, _graphicsDevice);
             
             _currentTimer = gameTime.TotalGameTime.TotalSeconds;
 
-            if(_jumpInProgress)
+            if(JumpInProgress)
                 CheckIfStillJumping();
         }
 
-        private void CheckIfStillJumping()
+        protected void CheckIfStillJumping()
         {
             var timeDiffrent = _currentTimer - _startJumpTime;
-            _jumpInProgress = timeDiffrent <= TimeInAir;
+            JumpInProgress = timeDiffrent <= TimeInAir;
         }
 
         public void Draw(SpriteBatch spriteBatch)

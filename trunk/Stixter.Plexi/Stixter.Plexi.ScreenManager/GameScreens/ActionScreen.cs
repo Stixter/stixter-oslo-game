@@ -14,7 +14,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         private KeyboardState _keyboardState;
         private readonly Texture2D _image;
         private readonly Rectangle _imageRectangle;
-        private readonly Player _player;
+        private readonly Player _character;
 
         private List<Platform> _platforms;
         private KeyboardState _oldKeyboardState;
@@ -27,7 +27,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             _image = image;
             _imageRectangle = new Rectangle(0, 0, Game.Window.ClientBounds.Width, Game.Window.ClientBounds.Height);
 
-            _player = new Player(game, "Sprites\\player_move");
+            _character = new Player(game, "Sprites\\player_move");
 
             BuildPlatforms();
         }
@@ -42,34 +42,21 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         {
             _keyboardState = Keyboard.GetState();
 
-            foreach (var key in _keyboardState.GetPressedKeys())
-            {
-                if (key == Keys.Space)
-                    _player.PlayerState = Player.State.Jumping;
-            }
+            if (_keyboardState.IsKeyDown(Keys.Space))
+                _character.PlayerState = Character.State.Jumping;
 
             if (_keyboardState.IsKeyDown(Keys.Right))
-            {
-                _player.MoveEnemy(AnimatedSprite.PlayerDirection.Right);
-                _playerDirection = 1;
-            }
+                _character.MoveCharacter(AnimatedSprite.PlayerDirection.Right);
             else if (_keyboardState.IsKeyDown(Keys.Left))
-            {
-                _player.MoveEnemy(AnimatedSprite.PlayerDirection.Left);
-                _playerDirection = 0;
-            }
+                _character.MoveCharacter(AnimatedSprite.PlayerDirection.Left);
             else
-            {
-                _player.MoveEnemy(AnimatedSprite.PlayerDirection.None);
-                _playerDirection = 2;   
-            }
+                _character.MoveCharacter(AnimatedSprite.PlayerDirection.None);
 
             _oldKeyboardState = _keyboardState;
 
             CheckPlatformHit();
 
             base.Update(gameTime);
-            
         }
 
         private void CheckPlatformHit()
@@ -77,14 +64,14 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             bool playerHitAnyPlatform = false;
             foreach (var platform in _platforms)
             {
-                if(platform.CheckHit(_player) != 0)
+                if(platform.CheckHit(_character) != 0)
                 {
-                    _player.HitFloor(platform.CheckHit(_player));
+                    _character.HitFloor(platform.CheckHit(_character));
                     playerHitAnyPlatform = true;
                 }
             }
 
-            _player.AllowJump = playerHitAnyPlatform;
+            _character.AllowJump = playerHitAnyPlatform;
         }
 
         public override void Draw(GameTime gameTime)
@@ -96,8 +83,8 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
                 platform.Draw(SpriteBatch);
             }
 
-            _player.UpdatePlayer(gameTime, _playerDirection);
-            _player.Draw(SpriteBatch);
+            _character.UpdatePlayer(gameTime);
+            _character.Draw(SpriteBatch);
 
             base.Draw(gameTime);
         }
