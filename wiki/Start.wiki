@@ -1,8 +1,8 @@
-#summary One-sentence summary of this page.
+#summary Plexi!
 
 = Introduction =
 
-Add your content here.
+A platform game
 
 
 = Details =
