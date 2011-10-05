@@ -1,79 +1,10 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Stixter.Plexi.Sprites.Helpers;
 
 namespace Stixter.Plexi.Sprites.Sprites
 {
-    public class Enemy : Character
-    {
-        public Enemy(Game game, string texture) : base(game, texture)
-        {
-            MaxCharacterVelocity = 3.0f;
-            LastPlayerY = 10f;
-            Sprite.Position.X = 100f;
-        }
-
-        public void MoveCharacter()
-        {
-            Sprite.Position.Y = LastPlayerY;
-
-            SetCorretSpeedOnPlayer();
-
-            if (Sprite.Position.X >= 1000 && CurrentPlayerDirection == AnimatedSprite.PlayerDirection.Right)
-            {
-                CurrentPlayerDirection = AnimatedSprite.PlayerDirection.Left;
-            }
-            else if (Sprite.Position.X <= 10 && CurrentPlayerDirection == AnimatedSprite.PlayerDirection.Left)
-            {
-                CurrentPlayerDirection = AnimatedSprite.PlayerDirection.Right;
-            }
-
-            SetCorretSpeedOnPlayer();
-            MovePlayerLeftOrRight();
-            LastplayerDirection = CurrentPlayerDirection;
-
-            Sprite.Position.Y = LastPlayerY + 5.0f;
-            LastPlayerY = Sprite.Position.Y;
-            PlayerState = State.Walking;
-            Sprite.Alive = true;
-        }
-    }
-    public class Player : Character
-    {
-        public Player(Game game, string texture) : base(game, texture)
-        {
-            MaxCharacterVelocity = 7.0f;
-            LastPlayerY = 312f;
-            Sprite.Position.X = 400f;
-        }
-
-        public void MoveCharacter(AnimatedSprite.PlayerDirection direction)
-        {
-            Sprite.Position.Y = LastPlayerY;
-
-            SetCurrentDirection(direction);
-            SetCorretSpeedOnPlayer();
-            MovePlayerLeftOrRight();
-
-            if (PlayerState.Equals(State.Jumping) && AllowJump)
-                Jump();
-
-            LastplayerDirection = direction;
-
-            if (!JumpInProgress)
-                Sprite.Position.Y = LastPlayerY + 5.0f;
-            else
-                Sprite.Position.Y = LastPlayerY - 5.0f;
-
-            LastPlayerY = Sprite.Position.Y;
-
-            PlayerState = State.Walking;
-            Sprite.Alive = true;
-        }
-    }
-
     public class Character : GameComponent
     {
         public enum State { Walking, Jumping }
@@ -81,7 +12,6 @@ namespace Stixter.Plexi.Sprites.Sprites
         public AnimatedSprite Sprite;
 
         private readonly GraphicsDevice _graphicsDevice;
-        private Rectangle _viewportRect;
         private double _currentTimer;
         private double _startJumpTime;
         const double TimeInAir = 0.5;
@@ -110,22 +40,21 @@ namespace Stixter.Plexi.Sprites.Sprites
                        (int)Sprite.Position.X + 50,
                        (int)Sprite.Position.Y,
                        Sprite.Sprite.Width - 180,
-                       Sprite.Sprite.Height - 200);
+                       Sprite.Sprite.Height - 220);
         }
 
         public Rectangle CharacterKillingHit()
         {
             return new Rectangle(
                        (int)Sprite.Position.X + 50,
-                       (int)Sprite.Position.Y,
+                       (int)Sprite.Position.Y -10,
                        Sprite.Sprite.Width - 180,
-                       Sprite.Sprite.Height - 200);
+                       Sprite.Sprite.Height - 220);
         }
 
         public Rectangle GetEnemyRec()
         {
-            return new Rectangle((int)Sprite.Position.X + 10, (int)Sprite.Position.Y + 10,Sprite.SourceRect.Width,
-                                            Sprite.SourceRect.Height); 
+            return new Rectangle((int)Sprite.Position.X + 10, (int)Sprite.Position.Y + 10,Sprite.SourceRect.Width, Sprite.SourceRect.Height); 
         }
 
         private void CreateGameObject()
