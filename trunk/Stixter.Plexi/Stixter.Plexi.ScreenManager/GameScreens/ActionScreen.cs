@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -15,7 +16,9 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         private readonly Texture2D _image;
         private readonly Rectangle _imageRectangle;
         private readonly Player _character;
-        private readonly Enemy _enemy;
+        private readonly List<Enemy> _enemys;
+        private const int _numberOfEnemys = 4;
+        private DeadCharacter _deadCharacter;
 
         private List<Platform> _platforms;
         private KeyboardState _oldKeyboardState;
@@ -25,9 +28,19 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         {
             _image = image;
             _imageRectangle = new Rectangle(0, 0, Game.Window.ClientBounds.Width, Game.Window.ClientBounds.Height);
+            _deadCharacter = new DeadCharacter(game);
 
             _character = new Player(game, "Sprites\\player_move");
-            _enemy = new Enemy(game, "Sprites\\enemy_move");
+
+            _enemys = new List<Enemy>();
+            float start = 50;
+            for (var i = 0; i < _numberOfEnemys; i++)
+            {
+                start += 50;
+                Thread.Sleep(20);
+                _enemys.Add(new Enemy(game, "Sprites\\enemy_move", start, new Random()));
+            }
+                
 
             BuildPlatforms();
         }
@@ -42,22 +55,41 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         {
             _keyboardState = Keyboard.GetState();
 
+            CheckIfCharacterIsJumpingAndChangeState();
+
+            SetCharacterMoveDirection();
+
+            foreach (var enemy in _enemys)
+            {
+                enemy.MoveCharacter();
+            }
+
+            if (!_character.Sprite.Alive)
+            {
+                _deadCharacter.Sprite.Position.Y = _character.Sprite.Position.Y + 30;
+                _deadCharacter.Sprite.Position.X = _character.Sprite.Position.X + 20;
+            }
+            _oldKeyboardState = _keyboardState;
+
+            CheckPlatformHit();
+
+            base.Update(gameTime);
+        }
+
+        private void CheckIfCharacterIsJumpingAndChangeState()
+        {
             if (_keyboardState.IsKeyDown(Keys.Space))
                 _character.PlayerState = Character.State.Jumping;
+        }
 
+        private void SetCharacterMoveDirection()
+        {
             if (_keyboardState.IsKeyDown(Keys.Right))
                 _character.MoveCharacter(AnimatedSprite.PlayerDirection.Right);
             else if (_keyboardState.IsKeyDown(Keys.Left))
                 _character.MoveCharacter(AnimatedSprite.PlayerDirection.Left);
             else
                 _character.MoveCharacter(AnimatedSprite.PlayerDirection.None);
-
-            _enemy.MoveCharacter();
-            _oldKeyboardState = _keyboardState;
-
-            CheckPlatformHit();
-
-            base.Update(gameTime);
         }
 
         private void CheckPlatformHit()
@@ -71,10 +103,18 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
                     playerHitAnyPlatform = true;
                 }
 
-                if (platform.CheckHit(_enemy) != 0)
+                foreach (var enemy in _enemys)
                 {
-                    _enemy.HitFloor(platform.CheckHit(_enemy));
+                    if (platform.CheckHit(enemy) != 0)
+                    {
+                        enemy.HitFloor(platform.CheckHit(enemy));
+                        if (enemy.CharacterKillingHit().Intersects(_character.CharacterKillingHit()))
+                        {
+                            _character.Sprite.Alive = false;
+                        }
+                    }
                 }
+                
             }
 
             _character.AllowJump = playerHitAnyPlatform;
@@ -83,20 +123,33 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         public override void Draw(GameTime gameTime)
         {
             SpriteBatch.Draw(_image, _imageRectangle, Color.White);
+            DrawAllPlatforms();
+            DrawPlayerIfAliveElseDrawDeathSprite(gameTime);
 
-            foreach (Platform platform in _platforms)
+            foreach (Enemy enemy in _enemys)
             {
-                platform.Draw(SpriteBatch);
+                enemy.UpdatePlayer(gameTime);
+                enemy.Draw(SpriteBatch);
             }
-
-            _character.UpdatePlayer(gameTime);
-            _character.Draw(SpriteBatch);
-
-            _enemy.UpdatePlayer(gameTime);
-            _enemy.Draw(SpriteBatch);
-
+           
             base.Draw(gameTime);
         }
 
+        private void DrawPlayerIfAliveElseDrawDeathSprite(GameTime gameTime)
+        {
+            if (_character.Sprite.Alive)
+            {
+                _character.UpdatePlayer(gameTime);
+                _character.Draw(SpriteBatch);
+            }
+            else
+                _deadCharacter.Draw(SpriteBatch);
+        }
+
+        private void DrawAllPlatforms()
+        {
+            foreach (var platform in _platforms)
+                platform.Draw(SpriteBatch);
+        }
     }
 }

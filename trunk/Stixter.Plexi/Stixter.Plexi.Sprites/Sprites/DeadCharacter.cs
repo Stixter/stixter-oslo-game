@@ -4,13 +4,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Stixter.Plexi.Sprites.Sprites
 {
-    public class Floor : GameComponent
+    public class DeadCharacter : GameComponent
     {
         private readonly ContentManager _contentManager;
         public GameSprite Sprite;
         private Texture2D _texture;
 
-        public Floor(Game game) : base(game)
+        public DeadCharacter(Game game)
+            : base(game)
         {
             _contentManager = game.Content;
             CreateObject();
@@ -19,15 +20,15 @@ namespace Stixter.Plexi.Sprites.Sprites
         public Rectangle GetFloorRec()
         {
             return new Rectangle(
-                       (int)Sprite.Position.X,
-                       (int)Sprite.Position.Y - 20,
-                       Sprite.Sprite.Width,
-                       Sprite.Sprite.Height - 90);
+                (int)Sprite.Position.X,
+                (int)Sprite.Position.Y - 20,
+                Sprite.Sprite.Width,
+                Sprite.Sprite.Height - 40);
         }
 
         private void CreateObject()
         {
-            _texture = _contentManager.Load<Texture2D>("Sprites\\floor");
+            _texture = _contentManager.Load<Texture2D>("Sprites\\player_angel");
             Sprite = new GameSprite(_texture) { Alive = true };
         }
 

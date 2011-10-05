@@ -18,10 +18,15 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         private void CreatePlatforms()
         {
             _platforms.Add(new Platform(30, 700, 0, Game));
-            _platforms.Add(new Platform(5, 500, 200, Game));
-            _platforms.Add(new Platform(10, 300, 0, Game));
-            _platforms.Add(new Platform(5, 200, 100, Game));
-            _platforms.Add(new Platform(5, 500, 700, Game));
+            _platforms.Add(new Platform(7, 600, 210, Game));
+            _platforms.Add(new Platform(5, 600, 700, Game));
+            _platforms.Add(new Platform(10, 500, 0, Game));
+            _platforms.Add(new Platform(5, 500, 900, Game));
+            _platforms.Add(new Platform(3, 400, 700, Game));
+            _platforms.Add(new Platform(8, 390, 190, Game));
+            _platforms.Add(new Platform(5, 250, 90, Game));
+            _platforms.Add(new Platform(6, 300, 1000, Game));
+            _platforms.Add(new Platform(7, 240, 520, Game));
         }
 
         public List<Platform> GetPlatformLevel1()

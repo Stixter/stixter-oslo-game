@@ -38,6 +38,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
                 if (component.Enabled == true)
                     component.Update(gameTime);
         }
+
         public override void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
