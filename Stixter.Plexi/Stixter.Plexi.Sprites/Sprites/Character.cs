@@ -34,7 +34,7 @@ namespace Stixter.Plexi.Sprites.Sprites
             CreateGameObject();
         }
 
-        public Rectangle PlayerFootHit()
+        public virtual Rectangle PlayerFootHit()
         {
             return new Rectangle(
                        (int)Sprite.Position.X + 50,
@@ -47,14 +47,18 @@ namespace Stixter.Plexi.Sprites.Sprites
         {
             return new Rectangle(
                        (int)Sprite.Position.X + 50,
-                       (int)Sprite.Position.Y -10,
+                       (int)Sprite.Position.Y - 10,
                        Sprite.Sprite.Width - 180,
                        Sprite.Sprite.Height - 220);
         }
 
-        public Rectangle GetEnemyRec()
+        public Rectangle GetPlayerRec()
         {
-            return new Rectangle((int)Sprite.Position.X + 10, (int)Sprite.Position.Y + 10,Sprite.SourceRect.Width, Sprite.SourceRect.Height); 
+            return new Rectangle(
+                (int)Sprite.Position.X + 25, 
+                (int)Sprite.Position.Y + 10,
+                Sprite.SourceRect.Width - 20, 
+                Sprite.SourceRect.Height); 
         }
 
         private void CreateGameObject()

@@ -7,10 +7,19 @@ namespace Stixter.Plexi.Sprites.Sprites
         public Player(Game game, string texture) : base(game, texture)
         {
             MaxCharacterVelocity = 7.0f;
-            LastPlayerY = 312f;
-            Sprite.Position.X = 400f;
+            LastPlayerY = 600f;
+            Sprite.Position.X = 100f;
             Sprite.Alive = true;
         }
+
+        //public override Rectangle PlayerFootHit()
+        //{
+        //    return new Rectangle(
+        //              (int)Sprite.Position.X + 50,
+        //              (int)Sprite.Position.Y,
+        //              Sprite.Sprite.Width - 180,
+        //              Sprite.Sprite.Height - 220);
+        //}
 
         public void MoveCharacter(AnimatedSprite.PlayerDirection direction)
         {

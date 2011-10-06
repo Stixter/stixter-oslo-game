@@ -19,6 +19,15 @@ namespace Stixter.Plexi.Sprites.Sprites
             return _random.Next(min, max);
         }
 
+        //public override Rectangle PlayerFootHit()
+        //{
+        //    return new Rectangle(
+        //              (int)Sprite.Position.X + 50,
+        //              (int)Sprite.Position.Y,
+        //              Sprite.Sprite.Width - 180,
+        //              Sprite.Sprite.Height - 220);
+        //}
+
         public void MoveCharacter()
         {
             Sprite.Position.Y = LastPlayerY;

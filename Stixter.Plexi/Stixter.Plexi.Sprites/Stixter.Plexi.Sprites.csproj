@@ -99,9 +99,12 @@
     <Compile Include="Sprites\DeadCharacter.cs" />
     <Compile Include="Sprites\Enemy.cs" />
     <Compile Include="Sprites\Floor.cs" />
+    <Compile Include="Sprites\InformationPanel.cs" />
+    <Compile Include="Sprites\PickUpItem.cs" />
     <Compile Include="Sprites\MenuBackgroundItem.cs" />
     <Compile Include="Sprites\Character.cs" />
     <Compile Include="Sprites\Player.cs" />
+    <Compile Include="Sprites\ScreenText.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
