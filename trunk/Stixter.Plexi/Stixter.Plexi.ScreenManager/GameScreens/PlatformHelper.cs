@@ -51,14 +51,29 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             CreateFloor();
         }
 
-        public float CheckHit(Character character)
+        public int GetPostionX()
+        {
+            return _postitionX;
+        }
+
+        public int GetPostionY()
+        {
+            return _postitionY;
+        }
+
+        public int GetLength()
+        {
+            return _lenght;
+        }
+
+        public float CheckFloorHit(Character character)
         {
             var playerAimRect = character.PlayerFootHit();
 
             foreach (var floor in _floorList)
             {
-                var enemyRec = floor.GetFloorRec();
-                if (playerAimRect.Intersects(enemyRec))
+                var floorRec = floor.GetFloorRec();
+                if (playerAimRect.Intersects(floorRec))
                 {
                     character.AllowJump = true;
                     return floor.Sprite.Position.Y - 85;

@@ -1,0 +1,37 @@
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace Stixter.Plexi.Sprites.Sprites
+{
+    public class ScreenText : GameComponent
+    {
+        private readonly SpriteFont font;
+        private Vector2 fontPos;
+
+        public ScreenText(Game game)
+            : base(game)
+        {
+            font = game.Content.Load<SpriteFont>("Fonts\\GameFont");
+            fontPos = new Vector2();
+        }
+
+        public void SetPosition(int x, int y)
+        {
+            fontPos.X = x;
+            fontPos.Y = y;
+        }
+
+        public void SetSpacing(int spacing)
+        {
+            font.Spacing = spacing;
+        }
+
+        public void Draw(SpriteBatch spriteBatch, string text)
+        {
+            var origin = font.MeasureString(text) / 2;
+
+            spriteBatch.DrawString(font, text, fontPos, Color.White, 0, new Vector2(0,0), 1.0f, SpriteEffects.None, 0.5f);
+        }
+    }
+}
