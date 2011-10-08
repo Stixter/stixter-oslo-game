@@ -117,6 +117,10 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Stixter.Plexi.Core\Stixter.Plexi.Core.csproj">
+      <Project>{0E6B2135-C4E6-46B6-A8D8-7458EEACCF03}</Project>
+      <Name>Stixter.Plexi.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Stixter.Plexi.ScreenManager\Stixter.Plexi.ScreenManager.csproj">
       <Project>{83F02894-8743-4553-BDEC-242CBC222475}</Project>
       <Name>Stixter.Plexi.ScreenManager</Name>

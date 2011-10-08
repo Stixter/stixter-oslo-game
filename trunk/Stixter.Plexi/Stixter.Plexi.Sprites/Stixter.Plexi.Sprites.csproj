@@ -106,6 +106,12 @@
     <Compile Include="Sprites\Player.cs" />
     <Compile Include="Sprites\ScreenText.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Stixter.Plexi.Core\Stixter.Plexi.Core.csproj">
+      <Project>{0E6B2135-C4E6-46B6-A8D8-7458EEACCF03}</Project>
+      <Name>Stixter.Plexi.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
   <!--

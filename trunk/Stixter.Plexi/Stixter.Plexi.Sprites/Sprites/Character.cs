@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Stixter.Plexi.Sprites.Helpers;
 
@@ -19,10 +20,13 @@ namespace Stixter.Plexi.Sprites.Sprites
         protected bool JumpInProgress;
         protected float CurrentVelocity = 1.0f;
         protected float LastPlayerY;
+        protected bool EnableJumpSound;
         public bool AllowJump;
         protected AnimatedSprite.PlayerDirection LastplayerDirection;
         protected AnimatedSprite.PlayerDirection CurrentPlayerDirection;
         private readonly string _texture;
+        private SoundEffect _jumpSound;
+        
    
         public Character(Game game, string texture) : base(game)
         {
@@ -30,7 +34,7 @@ namespace Stixter.Plexi.Sprites.Sprites
             
             var graphicsDeviceService = Game.Services.GetService(typeof(IGraphicsDeviceService)) as IGraphicsDeviceService;
             _graphicsDevice = graphicsDeviceService.GraphicsDevice;
-
+            _jumpSound = game.Content.Load<SoundEffect>("Sounds\\jump");
             CreateGameObject();
         }
 
@@ -90,6 +94,8 @@ namespace Stixter.Plexi.Sprites.Sprites
         {
             if(!JumpInProgress)
             {
+                if (EnableJumpSound)
+                    _jumpSound.Play();
                 JumpInProgress = true;
                 _startJumpTime = _currentTimer;
             }

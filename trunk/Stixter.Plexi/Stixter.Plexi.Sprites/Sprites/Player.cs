@@ -7,6 +7,12 @@ namespace Stixter.Plexi.Sprites.Sprites
         public Player(Game game, string texture) : base(game, texture)
         {
             MaxCharacterVelocity = 7.0f;
+            Reset();
+            EnableJumpSound = true;
+        }
+
+        public void Reset()
+        {
             LastPlayerY = 600f;
             Sprite.Position.X = 100f;
             Sprite.Alive = true;
