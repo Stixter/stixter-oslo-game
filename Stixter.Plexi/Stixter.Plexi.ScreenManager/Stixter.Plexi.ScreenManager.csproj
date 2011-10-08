@@ -102,6 +102,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Stixter.Plexi.Core\Stixter.Plexi.Core.csproj">
+      <Project>{0E6B2135-C4E6-46B6-A8D8-7458EEACCF03}</Project>
+      <Name>Stixter.Plexi.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Stixter.Plexi.Sprites\Stixter.Plexi.Sprites.csproj">
       <Project>{40E43671-35A5-4472-982A-C19D9C33F6A4}</Project>
       <Name>Stixter.Plexi.Sprites</Name>

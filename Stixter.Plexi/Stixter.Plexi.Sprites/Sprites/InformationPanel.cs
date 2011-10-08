@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Stixter.Plexi.Core;
 
 namespace Stixter.Plexi.Sprites.Sprites
 {
@@ -30,6 +31,11 @@ namespace Stixter.Plexi.Sprites.Sprites
             Sprite.Position.Y = 50;
         }
 
+        public void Reset()
+        {
+            Points = 0;
+        }
+
         public Rectangle GetFloorRec()
         {
             return new Rectangle(
@@ -54,7 +60,7 @@ namespace Stixter.Plexi.Sprites.Sprites
         {
             if (Sprite.Alive)
                 spriteBatch.Draw(Sprite.Sprite, Sprite.Position, null, Color.White, Sprite.Rotation, Sprite.Center, 1.0f, SpriteEffects.None, 0);
-            _timeText.Draw(spriteBatch, string.Format("Total time: {0}", CurrentTime));
+            _timeText.Draw(spriteBatch, string.Format("Total time: {0}", 30 - GameTimerHandler.CurrentGameTime));
             _pointsText.Draw(spriteBatch, string.Format("Points: {0}", Points));
         }
     }

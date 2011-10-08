@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -25,6 +26,7 @@ namespace Stixter.Plexi.ScreenManager.Menu
         private float _height = 0f;
         private ContentManager _contentManager;
         private MenuBackgroundItem _menuBackgroundItem;
+        private readonly SoundEffect _menuChangeSelected;
 
         public int SelectedIndex
         {
@@ -42,6 +44,8 @@ namespace Stixter.Plexi.ScreenManager.Menu
         public MenuComponent(Game game, SpriteBatch spriteBatch, SpriteFont spriteFont, List<MenuItems.MenuItem> menuItems)
             : base(game)
         {
+            _menuChangeSelected = game.Content.Load<SoundEffect>("Sounds\\button-16");
+           
             _spriteBatch = spriteBatch;
             _spriteFont = spriteFont;
             _menuItems = menuItems;
@@ -84,6 +88,7 @@ namespace Stixter.Plexi.ScreenManager.Menu
 
             if (CheckKey(Keys.Down))
             {
+                _menuChangeSelected.Play();
                 _selectedIndex++;
                 if (_selectedIndex == _menuItems.Count)
                     _selectedIndex = 0;
@@ -91,12 +96,13 @@ namespace Stixter.Plexi.ScreenManager.Menu
 
             if (CheckKey(Keys.Up))
             {
+                _menuChangeSelected.Play();
                 _selectedIndex--;
                 if (_selectedIndex < 0)
                     _selectedIndex = _menuItems.Count - 1;
             }
 
-            if(_keyboardState.GetPressedKeys().Contains(Keys.Enter))
+            if (CheckKey(Keys.Enter))
             {
                 _lastSelectedIndex = SelectedIndex;
                 _slectedColor = Color.Red;

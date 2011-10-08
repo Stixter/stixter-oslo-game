@@ -6,12 +6,20 @@ namespace Stixter.Plexi.Sprites.Sprites
     public class Enemy : Character
     {
         private Random _random;
+        private float _startPosition;
         public Enemy(Game game, string texture, float startPosition, Random random) : base(game, texture)
         {
+            _startPosition = startPosition;
             _random = random;
             MaxCharacterVelocity = 3.0f;
+            Reset();
+            EnableJumpSound = false;
+        }
+
+        public void Reset()
+        {
             LastPlayerY = 10f;
-            Sprite.Position.X = startPosition;
+            Sprite.Position.X = _startPosition;
         }
 
         private int RandomNumber(int min, int max)
