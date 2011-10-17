@@ -83,7 +83,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         private void BuildPlatforms()
         {
             var platformHandlerLevel1 = new LevelHandler(CurrentGame);
-            _platforms = platformHandlerLevel1.GetPlatformLevel1();
+            _platforms = platformHandlerLevel1.GetRandomLevel();
         }
 
         private void SetPickUpItemsOnPlatforms()
@@ -112,7 +112,9 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             SetCharacterMoveDirection();
 
             foreach (var enemy in _enemies)
+            {
                 enemy.MoveCharacter();
+            }
 
             if (!_player.Sprite.Alive)
             {
@@ -254,10 +256,11 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         {
             GameTimerHandler.TotalGameTime = 0;
             _player.Reset();
-
+            
             foreach (var enemy in _enemies)
                 enemy.Reset();
 
+            BuildPlatforms();
             SetPickUpItemsOnPlatforms();
             _informationPanel.Reset();
         }

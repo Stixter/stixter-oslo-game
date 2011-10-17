@@ -25,6 +25,15 @@ namespace Stixter.Plexi.Sprites.Sprites
                        Sprite.Sprite.Height - 90);
         }
 
+        public Rectangle GetCompleteFloorRec()
+        {
+            return new Rectangle(
+                       (int)Sprite.Position.X,
+                       (int)Sprite.Position.Y,
+                       Sprite.Sprite.Width,
+                       Sprite.Sprite.Height);
+        }
+
         private void CreateObject()
         {
             _texture = _contentManager.Load<Texture2D>("Sprites\\floor");

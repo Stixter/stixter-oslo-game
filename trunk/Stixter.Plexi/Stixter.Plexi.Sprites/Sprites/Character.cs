@@ -26,12 +26,14 @@ namespace Stixter.Plexi.Sprites.Sprites
         protected AnimatedSprite.PlayerDirection CurrentPlayerDirection;
         private readonly string _texture;
         private SoundEffect _jumpSound;
+        private ScreenText _screenText;
+        protected string DebugText = string.Empty;
         
    
         public Character(Game game, string texture) : base(game)
         {
             _texture = texture;
-            
+            _screenText = new ScreenText(Game);
             var graphicsDeviceService = Game.Services.GetService(typeof(IGraphicsDeviceService)) as IGraphicsDeviceService;
             _graphicsDevice = graphicsDeviceService.GraphicsDevice;
             _jumpSound = game.Content.Load<SoundEffect>("Sounds\\jump");
@@ -122,8 +124,10 @@ namespace Stixter.Plexi.Sprites.Sprites
             
             _currentTimer = gameTime.TotalGameTime.TotalSeconds;
 
-            if(JumpInProgress)
+            _screenText.SetPosition((int)Sprite.Position.X, (int)Sprite.Position.Y - 50);
+            if (JumpInProgress)
                 CheckIfStillJumping();
+
         }
 
         protected void CheckIfStillJumping()
@@ -136,6 +140,7 @@ namespace Stixter.Plexi.Sprites.Sprites
         {
             if (Sprite.Alive)
             {
+                _screenText.Draw(spriteBatch, DebugText);
                 spriteBatch.Draw(Sprite.Sprite, Sprite.Position, Sprite.SourceRect, Color.White, Sprite.Rotation, Sprite.Center, 1.0f, SpriteEffects.None, 0);
             }
         }

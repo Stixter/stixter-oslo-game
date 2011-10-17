@@ -43,8 +43,9 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         private void CreateEnemies(Game game)
         {
             _enemies = new List<Enemy>();
+            var random = new Random();
             float start = 50;
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < random.Next(6, 15); i++)
             {
                 start += 150;
                 Thread.Sleep(20);
