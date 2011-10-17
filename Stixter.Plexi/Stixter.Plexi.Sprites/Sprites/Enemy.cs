@@ -7,6 +7,7 @@ namespace Stixter.Plexi.Sprites.Sprites
     {
         private Random _random;
         private float _startPosition;
+
         public Enemy(Game game, string texture, float startPosition, Random random) : base(game, texture)
         {
             _startPosition = startPosition;
@@ -50,7 +51,8 @@ namespace Stixter.Plexi.Sprites.Sprites
                     : AnimatedSprite.PlayerDirection.Right;
             }
 
-            var maxValue = 1000;
+            var maxValue = 1000 - (int)Sprite.Position.Y;
+            //DebugText = "MaxValue " + maxValue.ToString();
             if (RandomNumber(0, maxValue) >  maxValue- 10)
             {
                 PlayerState = State.Jumping;
@@ -62,6 +64,8 @@ namespace Stixter.Plexi.Sprites.Sprites
             {
                 PlayerState = State.Walking;
             }
+
+            
 
             SetCorretSpeedOnPlayer();
             MovePlayerLeftOrRight();

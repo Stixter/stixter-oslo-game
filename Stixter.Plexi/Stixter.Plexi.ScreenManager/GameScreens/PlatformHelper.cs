@@ -1,21 +1,54 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Stixter.Plexi.Sprites.Sprites;
 
 namespace Stixter.Plexi.ScreenManager.GameScreens
 {
     public class LevelHandler : GameComponent
     {
         private readonly List<Platform> _platformsLevel1;
+        private readonly List<Platform> _platformsRandom;
         private readonly List<Platform> _platformsStartScreen;
+        private Random _random;
 
         public LevelHandler(Game game) : base(game)
         {
             _platformsLevel1 = new List<Platform>();
             _platformsStartScreen = new List<Platform>();
+            _platformsRandom = new List<Platform>();
+            _random = new Random();
             CreatePlatformsLevel1();
             CreatePlatformsStartScreen();
+            CreateRandomLevel();
+        }
+
+        public void CreateRandomLevel()
+        {
+            _platformsRandom.Clear();
+            var numberOfPlatforms = _random.Next(8, 10);
+            
+            _platformsRandom.Add(new Platform(30, 700, 0, Game));
+
+            var y = 650;
+            var x = 0;
+            var lastPlatform = CreateRandomPlatform(y, x);
+            for(var i = 0; i<numberOfPlatforms; i++)
+            {
+                y = lastPlatform.GetPostionY() - (50 + _random.Next(0, 20));
+                x = x + (lastPlatform.GetLength()*100);
+                if (x > 900)
+                    x = 0;
+
+                var platform = CreateRandomPlatform(y, x);
+                _platformsRandom.Add(platform);
+                lastPlatform = platform;
+            }
+        }
+
+        private Platform CreateRandomPlatform(int y, int x)
+        {
+            return new Platform(_random.Next(3, 10), _random.Next(y, y + 20), _random.Next(x, x + 100), Game);
         }
 
         private void CreatePlatformsLevel1()
@@ -50,80 +83,14 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             return _platformsLevel1;
         }
 
+        public List<Platform> GetRandomLevel()
+        {
+            return _platformsRandom;
+        }
+
         public List<Platform> GetPlatformStartScreen()
         {
             return _platformsStartScreen;
         }
     }
-
-    public class Platform : GameComponent
-    {
-        private readonly int _lenght;
-        private readonly int _postitionY;
-        private readonly int _postitionX;
-        private readonly List<Floor> _floorList;
-
-        public Platform(int length, int positionY, int positionX, Game game) : base(game)
-        {
-            _lenght = length;
-            _postitionY = positionY;
-            _postitionX = positionX;
-            _floorList = new List<Floor>();
-            CreateFloor();
-        }
-
-        public int GetPostionX()
-        {
-            return _postitionX;
-        }
-
-        public int GetPostionY()
-        {
-            return _postitionY;
-        }
-
-        public int GetLength()
-        {
-            return _lenght;
-        }
-
-        public float CheckFloorHit(Character character)
-        {
-            var playerAimRect = character.PlayerFootHit();
-
-            foreach (var floor in _floorList)
-            {
-                var floorRec = floor.GetFloorRec();
-                if (playerAimRect.Intersects(floorRec))
-                {
-                    character.AllowJump = true;
-                    return floor.Sprite.Position.Y - 85;
-                }
-            }
-
-            return 0;
-        }
-
-        private void CreateFloor()
-        {
-            for (var i = 0; i < _lenght; i++)
-            {
-                var floorItem = new Floor(Game);
-                _floorList.Add(floorItem);
-            }
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            var countingPositionX = _postitionX;
-            
-            foreach (var item in _floorList)
-            {
-                item.Sprite.Position.Y = _postitionY;
-                item.Sprite.Position.X = countingPositionX;
-                item.Draw(spriteBatch);
-                countingPositionX += 50;
-            }
-        }
-    } 
 }

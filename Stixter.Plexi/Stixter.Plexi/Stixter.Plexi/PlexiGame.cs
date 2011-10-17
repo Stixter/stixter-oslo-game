@@ -55,7 +55,7 @@ namespace Stixter.Plexi
             _graphics.PreferredBackBufferWidth = 1280;
             _graphics.PreferredBackBufferHeight = 720;
             _graphics.ApplyChanges();
-            _graphics.ToggleFullScreen();
+            //_graphics.ToggleFullScreen();
         }
 
         protected override void UnloadContent()
