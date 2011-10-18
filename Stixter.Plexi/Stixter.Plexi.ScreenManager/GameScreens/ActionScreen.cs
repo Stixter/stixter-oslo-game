@@ -23,7 +23,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         private Player _player;
         private List<Enemy> _enemies;
         private List<PickUpItem> _pickUpItems;
-        private const int NumberOfEnemys = 6;
+        private const int NumberOfEnemys = 1;
         private DeadCharacter _deadCharacter;
         private List<Platform> _platforms;
         private KeyboardState _oldKeyboardState;
@@ -122,12 +122,10 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
                 _deadCharacter.Sprite.Position.X = _player.Sprite.Position.X + 20;
             }
 
-            _oldKeyboardState = _keyboardState;
-
             CheckPlatformHit();
             CheckIfEnemiesKillsPlayer();
             CheckIfPlayerPickUpItemAndCreateNewItems();
-
+            _oldKeyboardState = _keyboardState;
             base.Update(gameTime);
         }
 
@@ -166,7 +164,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
 
         private void CheckIfCharacterIsJumpingAndChangeState()
         {
-            if (_keyboardState.IsKeyDown(Keys.Space))
+            if (_keyboardState.IsKeyDown(Keys.Space) && !_oldKeyboardState.IsKeyDown(Keys.Space))
                 _player.PlayerState = Character.State.Jumping;
         }
 
@@ -190,6 +188,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
                 if (platform.CheckFloorHit(_player) != 0)
                 {
                     _player.HitFloor(platform.CheckFloorHit(_player));
+                 
                     playerHitAnyPlatform = true;
                 }
 

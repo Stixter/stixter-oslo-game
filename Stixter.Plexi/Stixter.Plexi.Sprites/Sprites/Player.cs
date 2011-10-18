@@ -6,7 +6,7 @@ namespace Stixter.Plexi.Sprites.Sprites
     {
         public Player(Game game, string texture) : base(game, texture)
         {
-            MaxCharacterVelocity = 7.0f;
+            MaxCharacterVelocity = 6.8f;
             Reset();
             EnableJumpSound = true;
         }
@@ -17,15 +17,6 @@ namespace Stixter.Plexi.Sprites.Sprites
             Sprite.Position.X = 100f;
             Sprite.Alive = true;
         }
-
-        //public override Rectangle PlayerFootHit()
-        //{
-        //    return new Rectangle(
-        //              (int)Sprite.Position.X + 50,
-        //              (int)Sprite.Position.Y,
-        //              Sprite.Sprite.Width - 180,
-        //              Sprite.Sprite.Height - 220);
-        //}
 
         public void MoveCharacter(AnimatedSprite.PlayerDirection direction)
         {
@@ -43,9 +34,18 @@ namespace Stixter.Plexi.Sprites.Sprites
                 LastplayerDirection = direction;
 
                 if (!JumpInProgress)
-                    Sprite.Position.Y = LastPlayerY + 5.0f;
+                {
+                    Sprite.Position.Y = LastPlayerY + FallingVelocity;
+                    if(FallingVelocity<7.0)
+                        FallingVelocity = FallingVelocity + 0.2f;
+                }
                 else
-                    Sprite.Position.Y = LastPlayerY - 5.0f;
+                {
+                    Sprite.Position.Y = LastPlayerY - JumpingVelocity;
+                    if (JumpingVelocity < 1.0)
+                        JumpingVelocity = JumpingVelocity - 0.8f;
+                }
+
 
                 LastPlayerY = Sprite.Position.Y;
 

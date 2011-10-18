@@ -15,18 +15,20 @@ namespace Stixter.Plexi.Sprites.Sprites
         private readonly GraphicsDevice _graphicsDevice;
         private double _currentTimer;
         private double _startJumpTime;
-        const double TimeInAir = 0.5;
+        const double TimeInAir = 0.52;
         protected float MaxCharacterVelocity = 7.0f;
         protected bool JumpInProgress;
         protected float CurrentVelocity = 1.0f;
         protected float LastPlayerY;
         protected bool EnableJumpSound;
         public bool AllowJump;
+        protected float FallingVelocity = 1.0f;
+        protected float JumpingVelocity = 1.0f;
         protected AnimatedSprite.PlayerDirection LastplayerDirection;
         protected AnimatedSprite.PlayerDirection CurrentPlayerDirection;
         private readonly string _texture;
-        private SoundEffect _jumpSound;
-        private ScreenText _screenText;
+        private readonly SoundEffect _jumpSound;
+        private readonly ScreenText _screenText;
         protected string DebugText = string.Empty;
         
    
@@ -44,7 +46,7 @@ namespace Stixter.Plexi.Sprites.Sprites
         {
             return new Rectangle(
                        (int)Sprite.Position.X + 50,
-                       (int)Sprite.Position.Y,
+                       (int)Sprite.Position.Y -1,
                        Sprite.Sprite.Width - 180,
                        Sprite.Sprite.Height - 220);
         }
@@ -76,8 +78,10 @@ namespace Stixter.Plexi.Sprites.Sprites
         {
             if (!JumpInProgress)
             {
-                Sprite.Position.Y = posY;
+                Sprite.Position.Y = posY - 2;
                 LastPlayerY = Sprite.Position.Y;
+                FallingVelocity = 4.5f;
+                JumpingVelocity = 4.5f;
             }
         }
 
@@ -86,7 +90,7 @@ namespace Stixter.Plexi.Sprites.Sprites
             if((LastplayerDirection == CurrentPlayerDirection))
             {
                 if(CurrentVelocity < MaxCharacterVelocity)
-                    CurrentVelocity = CurrentVelocity + 0.07f;
+                    CurrentVelocity = CurrentVelocity + 0.11f;
             }
             else
                 CurrentVelocity = 0;
