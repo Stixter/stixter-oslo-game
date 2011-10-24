@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Stixter.Plexi.Core;
 
 namespace Stixter.Plexi.Sprites.Sprites
 {
@@ -18,8 +19,19 @@ namespace Stixter.Plexi.Sprites.Sprites
             Sprite.Alive = true;
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            
+            base.Update(gameTime);
+        }
+
         public void MoveCharacter(AnimatedSprite.PlayerDirection direction)
         {
+            if (GameTimerHandler.CurrentGameTime == 30)
+            {
+                Sprite.Alive = false;
+            }
+
             if (Sprite.Alive)
             {
                 Sprite.Position.Y = LastPlayerY;

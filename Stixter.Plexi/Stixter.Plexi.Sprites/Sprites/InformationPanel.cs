@@ -13,7 +13,6 @@ namespace Stixter.Plexi.Sprites.Sprites
         private ScreenText _timeText;
         private ScreenText _pointsText;
         public string CurrentTime = "notime";
-        public int Points = 0;
 
         public InformationPanel(Game game)
             : base(game)
@@ -33,7 +32,7 @@ namespace Stixter.Plexi.Sprites.Sprites
 
         public void Reset()
         {
-            Points = 0;
+            ScoreHandler.Reset();
         }
 
         public Rectangle GetFloorRec()
@@ -51,17 +50,12 @@ namespace Stixter.Plexi.Sprites.Sprites
             Sprite = new GameSprite(_texture) { Alive = true };
         }
 
-        public void AddPoint()
-        {
-            Points++;
-        }
-
         public void Draw(SpriteBatch spriteBatch)
         {
             if (Sprite.Alive)
                 spriteBatch.Draw(Sprite.Sprite, Sprite.Position, null, Color.White, Sprite.Rotation, Sprite.Center, 1.0f, SpriteEffects.None, 0);
             _timeText.Draw(spriteBatch, string.Format("Total time: {0}", 30 - GameTimerHandler.CurrentGameTime));
-            _pointsText.Draw(spriteBatch, string.Format("Points: {0}", Points));
+            _pointsText.Draw(spriteBatch, string.Format("Points: {0}", ScoreHandler.TotalScore));
         }
     }
 }

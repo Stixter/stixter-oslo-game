@@ -10,7 +10,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         private readonly List<Platform> _platformsLevel1;
         private readonly List<Platform> _platformsRandom;
         private readonly List<Platform> _platformsStartScreen;
-        private Random _random;
+        private readonly Random _random;
 
         public LevelHandler(Game game) : base(game)
         {
