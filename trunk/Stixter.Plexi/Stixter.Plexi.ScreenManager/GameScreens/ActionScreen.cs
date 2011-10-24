@@ -19,15 +19,16 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         private KeyboardState _keyboardState;
         private readonly Texture2D _image;
         private readonly Rectangle _imageRectangle;
-        private InformationPanel _informationPanel;
+        private readonly InformationPanel _informationPanel;
         private Player _player;
         private List<Enemy> _enemies;
-        private List<PickUpItem> _pickUpItems;
         private const int NumberOfEnemys = 1;
         private DeadCharacter _deadCharacter;
         private List<Platform> _platforms;
         private KeyboardState _oldKeyboardState;
-        private SoundEffect _pickUpItemSound, _playerDies;
+        private readonly SoundEffect _playerDies;
+        private readonly ICollectItemHandler _collectItemHandler;
+        private List<Cloud> _clouds;
 
         public ActionScreen(Game game, SpriteBatch spriteBatch, Texture2D image)
             : base(game, spriteBatch)
@@ -36,15 +37,31 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             _imageRectangle = new Rectangle(0, 0, Game.Window.ClientBounds.Width, Game.Window.ClientBounds.Height);
             
             _informationPanel = new InformationPanel(game);
+            _informationPanel.Reset();
 
-            _pickUpItemSound = game.Content.Load<SoundEffect>("Sounds\\coin-drop-4");
+            CreateClouds(game);
+
             _playerDies = game.Content.Load<SoundEffect>("Sounds\\pain");
-            
+
+            _collectItemHandler =  new CollectItemHandler();
+            _collectItemHandler.Init(game);
+            _collectItemHandler.CreatePickUpItems();
+
             CreatePlayer(game);
             CreateEnemies(game);
-            CreatePickUpItems(game);
             BuildPlatforms();
-            SetPickUpItemsOnPlatforms();
+            _collectItemHandler.SetPickUpItemsOnPlatforms(_platforms);
+        }
+
+        private void CreateClouds(Game game)
+        {
+            _clouds = new List<Cloud>();
+            var numberOfClouds = new Random().Next(3, 6);
+            for (var i = 0; i < numberOfClouds; i++)
+            {
+                _clouds.Add(new Cloud(game, new Random()));
+                Thread.Sleep(412);
+            }
         }
 
         public bool CheckIfGameIsOver()
@@ -56,16 +73,6 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         {
             _deadCharacter = new DeadCharacter(game);
             _player = new Player(game, "Sprites\\player_move");
-        }
-
-        private void CreatePickUpItems(Game game)
-        {
-            _pickUpItems = new List<PickUpItem>();
-            for (var i = 0; i < 3; i++)
-            {
-                var light = new PickUpItem(game);
-                _pickUpItems.Add(light);
-            }
         }
 
         private void CreateEnemies(Game game)
@@ -86,26 +93,15 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             _platforms = platformHandlerLevel1.GetRandomLevel();
         }
 
-        private void SetPickUpItemsOnPlatforms()
-        {
-            var lightCount = 0;
-            foreach (var pickUpItem in _pickUpItems)
-            {
-                ItemPositionHandler.PlaceItem(lightCount, _platforms, pickUpItem);
-                lightCount++;
-            }
-        }
-
         public override void Update(GameTime gameTime)
         {
             GameTimerHandler.TotalGameTime = (int)gameTime.TotalGameTime.TotalSeconds;
 
-            if (GameTimerHandler.CurrentGameTime == 30)
+            foreach (var cloud in _clouds)
             {
-                _player.Sprite.Alive = false;
+                cloud.Update(gameTime);
             }
-
-            //_informationPanel.CurrentTime = totalSeconds.ToString();
+            
             _keyboardState = Keyboard.GetState();
 
             CheckIfCharacterIsJumpingAndChangeState();
@@ -124,29 +120,9 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
 
             CheckPlatformHit();
             CheckIfEnemiesKillsPlayer();
-            CheckIfPlayerPickUpItemAndCreateNewItems();
+            _collectItemHandler.CheckIfPlayerPickUpItemAndCreateNewItems(_player.GetPlayerRec(), _platforms);
             _oldKeyboardState = _keyboardState;
             base.Update(gameTime);
-        }
-
-        private void CheckIfPlayerPickUpItemAndCreateNewItems()
-        {
-            var allLightsAreDead = true;
-            foreach (var pickUpItem in _pickUpItems)
-            {
-                if (pickUpItem.GetFloorRec().Intersects(_player.GetPlayerRec()) && pickUpItem.Sprite.Alive)
-                {
-                    _pickUpItemSound.Play();
-                    _informationPanel.AddPoint();
-                    pickUpItem.Sprite.Alive = false;
-                }
-
-                if (pickUpItem.Sprite.Alive)
-                    allLightsAreDead = false;
-            }
-
-            if (allLightsAreDead)
-                SetPickUpItemsOnPlatforms();
         }
 
         private void CheckIfEnemiesKillsPlayer()
@@ -217,6 +193,11 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         {
             SpriteBatch.Draw(_image, _imageRectangle, Color.White);
             _informationPanel.Draw(SpriteBatch);
+            foreach (var cloud in _clouds)
+            {
+                cloud.Draw(SpriteBatch);    
+            }
+            
             DrawAllPlatforms();
             DrawPlayerIfAliveElseDrawDeathSprite(gameTime);
 
@@ -226,10 +207,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
                 enemy.Draw(SpriteBatch);
             }
 
-            foreach (var light in _pickUpItems)
-            {
-                light.Draw(SpriteBatch);
-            }
+            _collectItemHandler.DrawAllItems(SpriteBatch);
            
             base.Draw(gameTime);
         }
@@ -260,7 +238,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
                 enemy.Reset();
 
             BuildPlatforms();
-            SetPickUpItemsOnPlatforms();
+            _collectItemHandler.SetPickUpItemsOnPlatforms(_platforms);
             _informationPanel.Reset();
         }
     }
