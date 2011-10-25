@@ -27,10 +27,10 @@ namespace Stixter.Plexi.Sprites.Sprites
 
         public void MoveCharacter(AnimatedSprite.PlayerDirection direction)
         {
-            if (GameTimerHandler.CurrentGameTime == 30)
-            {
-                Sprite.Alive = false;
-            }
+            //if (GameTimerHandler.CurrentGameTime == 30)
+            //{
+            //    Sprite.Alive = false;
+            //}
 
             if (Sprite.Alive)
             {

@@ -19,7 +19,7 @@ namespace Stixter.Plexi.Sprites.Sprites
 
         public void Reset()
         {
-            LastPlayerY = 10f;
+            LastPlayerY = 0f;
             Sprite.Position.X = _startPosition;
         }
 
