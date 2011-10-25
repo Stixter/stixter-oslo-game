@@ -54,7 +54,7 @@ namespace Stixter.Plexi.Sprites.Sprites
         {
             if (Sprite.Alive)
                 spriteBatch.Draw(Sprite.Sprite, Sprite.Position, null, Color.White, Sprite.Rotation, Sprite.Center, 1.0f, SpriteEffects.None, 0);
-            _timeText.Draw(spriteBatch, string.Format("Total time: {0}", 30 - GameTimerHandler.CurrentGameTime));
+            _timeText.Draw(spriteBatch, string.Format("Total time: {0}", GameTimerHandler.CurrentGameTime));
             _pointsText.Draw(spriteBatch, string.Format("Points: {0}", ScoreHandler.TotalScore));
         }
     }

@@ -97,7 +97,12 @@
     <Compile Include="GameScreens\Platform.cs" />
     <Compile Include="GameScreens\PlatformHelper.cs" />
     <Compile Include="GameScreens\StartScreen.cs" />
+    <Compile Include="Handlers\CloudHandler.cs" />
+    <Compile Include="Handlers\CollectItemHandler.cs" />
+    <Compile Include="Handlers\EnemiesHandler.cs" />
+    <Compile Include="Handlers\ICloudHandler.cs" />
     <Compile Include="Handlers\ICollectItemHandler.cs" />
+    <Compile Include="Handlers\IEnemiesHandler.cs" />
     <Compile Include="Handlers\ItemPositionHandler.cs" />
     <Compile Include="Menu\MenuComponent.cs" />
     <Compile Include="Menu\MenuItems.cs" />

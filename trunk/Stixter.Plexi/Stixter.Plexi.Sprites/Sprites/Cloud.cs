@@ -10,51 +10,55 @@ namespace Stixter.Plexi.Sprites.Sprites
         private readonly ContentManager _contentManager;
         public GameSprite Sprite;
         private Texture2D _texture;
-        private Random _random;
+        private readonly GraphicsDevice _graphicsDeviceService;
+        private const string SmallCloudTexture = "Sprites\\cloud_small";
+        private const string BigCloudTexture = "Sprites\\cloud";
 
-        public Cloud(Game game, Random random) : base(game)
+        public Cloud(Game game) : base(game)
         {
-            _random = random;
-            
             _contentManager = game.Content;
+            var graphicsDeviceService = Game.Services.GetService(typeof(IGraphicsDeviceService)) as IGraphicsDeviceService;
+            if (graphicsDeviceService != null) _graphicsDeviceService = graphicsDeviceService.GraphicsDevice;
+
             CreateObject();
-
-            var speed = (float) _random.NextDouble();
-            if (speed == 0.0)
-                speed = 0.1f;    
-            Sprite.Velocity = new Vector2(1 + speed, 0);
-
+            SetCloudVelocity();
         }
 
-        private int GetRandomNumber(int nLow, int nHigh)
+        private void SetCloudVelocity()
         {
-            return _random.Next(nLow, nHigh);
-            return (_random.Next() % (nHigh - nLow + 1)) + nLow;
-        } 
+            var speed = (float)RandomHelper.Instance.NextDouble();
+            
+            if (speed.Equals(0.0))
+                speed = 0.1f;  
+  
+            Sprite.Velocity = new Vector2(1 + speed, 0);
+        }
 
         private void CreateObject()
         {
-            var selectTexture = GetRandomNumber(0, 1);
-            if (selectTexture.Equals(1))
-                _texture = _contentManager.Load<Texture2D>("Sprites\\cloud");
-            else
-            {
-                _texture = _contentManager.Load<Texture2D>("Sprites\\cloud_small");
-            }
+            RandomizeTexture();
             Sprite = new GameSprite(_texture) { Alive = true };
+            RadomizeSpritePostion();
+        }
 
-            Sprite.Position.X = GetRandomNumber(1280, 1800);
-            Sprite.Position.Y = GetRandomNumber(100, 600);
+        private void RadomizeSpritePostion()
+        {
+            Sprite.Position.X = RandomHelper.Instance.Next(0, _graphicsDeviceService.Viewport.Width + 800);
+            Sprite.Position.Y = RandomHelper.Instance.Next(100, _graphicsDeviceService.Viewport.Height - 200);
+        }
+
+        private void RandomizeTexture()
+        {
+            var selectTexture = RandomHelper.Instance.Next(0, 100);
+            _texture = _contentManager.Load<Texture2D>(selectTexture > 50 ? BigCloudTexture : SmallCloudTexture);
         }
 
         public override void Update(GameTime gameTime)
         {
             Sprite.Position.X = Sprite.Position.X - Sprite.Velocity.X;
-            if (Sprite.Position.X < -_random.Next(100, 300))
-            {
-                Random r = new Random();
-                Sprite.Position.X = r.Next(1280, 1500);
-            }
+            if (Sprite.Position.X < -RandomHelper.Instance.Next(100, 300))
+                Sprite.Position.X = RandomHelper.Instance.Next(_graphicsDeviceService.Viewport.Width + 100, _graphicsDeviceService.Viewport.Width + 800);
+
             base.Update(gameTime);
         }
 
