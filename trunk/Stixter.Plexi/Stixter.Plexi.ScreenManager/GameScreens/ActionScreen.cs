@@ -72,7 +72,6 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         {
             GameTimerHandler.TotalGameTime = (int)gameTime.TotalGameTime.TotalSeconds;
 
-           
             _cloudHandler.Update(gameTime);
      
             _keyboardState = Keyboard.GetState();

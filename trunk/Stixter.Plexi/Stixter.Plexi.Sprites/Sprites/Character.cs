@@ -144,7 +144,7 @@ namespace Stixter.Plexi.Sprites.Sprites
         {
             if (Sprite.Alive)
             {
-                _screenText.Draw(spriteBatch, DebugText);
+                //_screenText.Draw(spriteBatch, DebugText);
                 spriteBatch.Draw(Sprite.Sprite, Sprite.Position, Sprite.SourceRect, Color.White, Sprite.Rotation, Sprite.Center, 1.0f, SpriteEffects.None, 0);
             }
         }

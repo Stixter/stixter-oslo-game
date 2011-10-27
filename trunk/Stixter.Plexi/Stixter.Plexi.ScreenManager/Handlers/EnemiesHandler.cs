@@ -12,7 +12,7 @@ namespace Stixter.Plexi.ScreenManager.Handlers
     public class EnemiesHandler : GameComponent, IEnemiesHandler
     {
         private readonly List<Enemy> _enemies;
-        private const int NumberOfEnemies = 3;
+        private const int NumberOfEnemies = 1;
         private bool _isOkToAddNewEnemy = false;
         private int _lastEnemyAdded = 0;
         private const int NewEnemyRate = 10;
@@ -86,7 +86,7 @@ namespace Stixter.Plexi.ScreenManager.Handlers
             for (var i = 0; i < NumberOfEnemies; i++)
             {
                 start += 150;
-                Thread.Sleep(20);
+                Thread.Sleep(20); //TODO FIXA!
                 _enemies.Add(new Enemy(Game, "Sprites\\enemy_move", start, new Random()));
             }
         }

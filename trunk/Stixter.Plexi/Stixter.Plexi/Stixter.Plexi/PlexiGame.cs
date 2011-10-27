@@ -111,6 +111,7 @@ namespace Stixter.Plexi
                     _gameIsOn = false;
                     MediaPlayer.Play(_menuSong);
                     SetActiveScreen(_startScreen);
+                    _startScreen.SetScoreText();
                 }
             }
 
