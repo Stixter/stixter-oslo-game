@@ -31,7 +31,7 @@ namespace Stixter.Plexi.Sprites.Sprites
         {
             var origin = font.MeasureString(text) / 2;
 
-            spriteBatch.DrawString(font, text, fontPos, Color.White, 0, new Vector2(0,0), 1.0f, SpriteEffects.None, 0.5f);
+            spriteBatch.DrawString(font, text, fontPos, Color.WhiteSmoke, 0, new Vector2(0,0), 1.0f, SpriteEffects.None, 0.5f);
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Stixter.Plexi.Core;
 using Stixter.Plexi.ScreenManager.Menu;
 using Stixter.Plexi.Sprites.Sprites;
 
@@ -18,6 +19,8 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         private readonly Rectangle _imageRectangle;
         private List<Platform> _platforms;
         private List<Enemy> _enemies;
+        private ScreenText _resultText;
+        private string _result;
 
         public StartScreen(Game game, SpriteBatch spriteBatch, SpriteFont spriteFont, Texture2D image)
             : base(game, spriteBatch)
@@ -32,7 +35,8 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
 
             _menuComponent = new MenuComponent(game, spriteBatch, spriteFont, menuItems);
 
-            
+            _resultText = new ScreenText(game);
+            _resultText.SetPosition(500, 150);
             Components.Add(_menuComponent);
             BuildPlatforms();
             CreateEnemies(game);
@@ -93,10 +97,21 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             base.Update(gameTime);
         }
 
+        public void SetScoreText()
+        {
+            _result = "Last game result: " + ScoreHandler.TotalScore;
+        }
+
         public override void Draw(GameTime gameTime)
         {
             SpriteBatch.Draw(_image, _imageRectangle, Color.White);
             DrawAllPlatforms();
+
+            if (!string.IsNullOrEmpty(_result))
+            {
+                _resultText.Draw(SpriteBatch, _result);
+            }
+
             foreach (var enemy in _enemies)
             {
                 enemy.UpdatePlayer(gameTime);
