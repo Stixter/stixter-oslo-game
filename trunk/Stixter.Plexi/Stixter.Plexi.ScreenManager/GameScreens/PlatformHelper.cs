@@ -18,7 +18,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             _platformsStartScreen = new List<Platform>();
             _platformsRandom = new List<Platform>();
             _random = new Random();
-            CreatePlatformsLevel1();
+            //CreatePlatformsLevel1();
             CreatePlatformsStartScreen();
             CreateRandomLevel();
         }
@@ -26,7 +26,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         public void CreateRandomLevel()
         {
             _platformsRandom.Clear();
-            var numberOfPlatforms = _random.Next(8, 10);
+            var numberOfPlatforms = _random.Next(10, 12);
             
             _platformsRandom.Add(new Platform(30, 700, 0, Game));
 
@@ -48,7 +48,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
 
         private Platform CreateRandomPlatform(int y, int x)
         {
-            return new Platform(_random.Next(3, 10), _random.Next(y, y + 20), _random.Next(x, x + 100), Game);
+            return new Platform(_random.Next(3, 8), _random.Next(y, y + 20), _random.Next(x, x + 100), Game);
         }
 
         private void CreatePlatformsLevel1()
@@ -69,7 +69,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         {
             _platformsStartScreen.Add(new Platform(30, 700, 0, Game));
             _platformsStartScreen.Add(new Platform(7, 600, 240, Game));
-            _platformsStartScreen.Add(new Platform(5, 600, 700, Game));
+            _platformsStartScreen.Add(new Platform(5, 600, 800, Game));
             _platformsStartScreen.Add(new Platform(8, 500, 0, Game));
             _platformsStartScreen.Add(new Platform(6, 490, 950, Game));
             _platformsStartScreen.Add(new Platform(3, 390, 100, Game));

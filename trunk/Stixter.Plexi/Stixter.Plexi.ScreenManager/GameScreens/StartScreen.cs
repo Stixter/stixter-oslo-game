@@ -36,7 +36,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             _menuComponent = new MenuComponent(game, spriteBatch, spriteFont, menuItems);
 
             _resultText = new ScreenText(game);
-            _resultText.SetPosition(500, 150);
+            _resultText.SetPosition(1000, 30);
             Components.Add(_menuComponent);
             BuildPlatforms();
             CreateEnemies(game);
