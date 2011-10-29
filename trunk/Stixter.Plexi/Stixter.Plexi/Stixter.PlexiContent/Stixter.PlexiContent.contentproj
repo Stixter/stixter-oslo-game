@@ -103,13 +103,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Sprites\player_angel.png">
-      <Name>player_angel</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Sprites\pickupitem.png">
       <Name>pickupitem</Name>
       <Importer>TextureImporter</Importer>
@@ -203,6 +196,13 @@
   <ItemGroup>
     <Compile Include="Sprites\cloud_small.png">
       <Name>cloud_small</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Sprites\player_angel.png">
+      <Name>player_angel</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
