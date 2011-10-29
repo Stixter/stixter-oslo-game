@@ -16,7 +16,7 @@ namespace Stixter.Plexi.ScreenManager.Menu
         private int _selectedIndex;
         private int _lastSelectedIndex;
         private Color _notSelectedColor = Color.Yellow;
-        private Color _slectedColor = Color.Red;
+        private Color _slectedColor = Color.Orange;
         private KeyboardState _keyboardState;
         private KeyboardState _oldKeyboardState;
         private readonly SpriteBatch _spriteBatch;
@@ -105,7 +105,6 @@ namespace Stixter.Plexi.ScreenManager.Menu
             if (CheckKey(Keys.Enter))
             {
                 _lastSelectedIndex = SelectedIndex;
-                _slectedColor = Color.Red;
             }
 
             base.Update(gameTime);

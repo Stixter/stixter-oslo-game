@@ -77,7 +77,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
                 item.Sprite.Position.Y = _postitionY;
                 item.Sprite.Position.X = countingPositionX;
                 item.Draw(spriteBatch);
-                countingPositionX += 50;
+                countingPositionX += item.GetCompleteFloorRec().Width;
             }
         }
     }
