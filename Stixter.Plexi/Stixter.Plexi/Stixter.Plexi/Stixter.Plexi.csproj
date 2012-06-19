@@ -113,6 +113,7 @@
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml">
       <Private>False</Private>
     </Reference>
@@ -144,6 +145,10 @@
     <ProjectReference Include="..\..\Stixter.Plexi.ScreenManager\Stixter.Plexi.ScreenManager.csproj">
       <Project>{83F02894-8743-4553-BDEC-242CBC222475}</Project>
       <Name>Stixter.Plexi.ScreenManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Stixter.Plexi.Service\Stixter.Plexi.Service.csproj">
+      <Project>{2FEF471B-4B50-4CC3-AC60-93ADEC768626}</Project>
+      <Name>Stixter.Plexi.Service</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Stixter.Plexi.Sprites\Stixter.Plexi.Sprites.csproj">
       <Project>{40E43671-35A5-4472-982A-C19D9C33F6A4}</Project>

@@ -1,6 +1,10 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Stixter.Plexi.Core;
+using Stixter.Plexi.Service;
 using Stixter.Plexi.Sprites.Sprites;
 
 namespace Stixter.Plexi.ScreenManager.GameScreens
@@ -14,11 +18,16 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         private readonly Texture2D _image;
         private readonly Rectangle _imageRectangle;
         private readonly ScreenText _highScoreTableText;
+        private readonly PlexiIntegrationService _highScoreService;
+        private List<HighScore> _highScores;
+
         public bool IshighScore;
 
         public GameOverScreen(Game game, SpriteBatch spriteBatch, SpriteFont spriteFont, Texture2D image)
             : base(game, spriteBatch)
         {
+            _highScoreService = new PlexiIntegrationService();
+            GetHighScoreFromLeaderBoard();
             IshighScore = false;
             _gameOverText = new BlinkText(spriteFont, 20);
             _gameOverText.SetPosition(555, 140);
@@ -37,8 +46,14 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             _imageRectangle = new Rectangle(0, 0, Game.Window.ClientBounds.Width, Game.Window.ClientBounds.Height);
         }
 
+        public void GetHighScoreFromLeaderBoard()
+        {
+            _highScores = _highScoreService.GetHighScores();
+        }
+
         public void SetScoreText()
         {
+            _highScoreService.CommitHighScore(new HighScore{Date = DateTime.Now, Name = "Jonas", Score = ScoreHandler.TotalScore});
             var rank = "Loser";
             if (ScoreHandler.TotalScore > 5)
                 rank = "Chicken";
@@ -67,7 +82,15 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         {
             SpriteBatch.Draw(_image, _imageRectangle, Color.White);
 
-            //_highScoreTableText.Draw(SpriteBatch, "1. Jonas Persson - Score: 12\n2. Jonas - Score: 12");
+            var stringBuilder = new StringBuilder();
+            var position = 1;
+            foreach (var highScore in _highScores)
+            {
+                stringBuilder.AppendLine(position + " " + highScore.Name + " " + highScore.Date + " " + highScore.Score);
+                position++;
+            }
+            _highScoreTableText.Draw(SpriteBatch, stringBuilder.ToString());
+
             _pressSpaceToContinue.Draw(SpriteBatch, "GO TO MAIN MENU, PRESS \"F1\"");
            
             if (!IshighScore)

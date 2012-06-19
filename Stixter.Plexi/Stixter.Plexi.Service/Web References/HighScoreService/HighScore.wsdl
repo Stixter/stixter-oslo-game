@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetHighScore">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetHighScoreResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHighScoreResult" type="tns:ArrayOfPlayerScore" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPlayerScore">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PlayerScore" nillable="true" type="tns:PlayerScore" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PlayerScore">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Score" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Time" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CommitPlayerScore">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="playerScore" type="tns:PlayerScore" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CommitPlayerScoreResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetHighScoreSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHighScore" />
+  </wsdl:message>
+  <wsdl:message name="GetHighScoreSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHighScoreResponse" />
+  </wsdl:message>
+  <wsdl:message name="CommitPlayerScoreSoapIn">
+    <wsdl:part name="parameters" element="tns:CommitPlayerScore" />
+  </wsdl:message>
+  <wsdl:message name="CommitPlayerScoreSoapOut">
+    <wsdl:part name="parameters" element="tns:CommitPlayerScoreResponse" />
+  </wsdl:message>
+  <wsdl:portType name="HighScoreSoap">
+    <wsdl:operation name="GetHighScore">
+      <wsdl:input message="tns:GetHighScoreSoapIn" />
+      <wsdl:output message="tns:GetHighScoreSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CommitPlayerScore">
+      <wsdl:input message="tns:CommitPlayerScoreSoapIn" />
+      <wsdl:output message="tns:CommitPlayerScoreSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HighScoreSoap" type="tns:HighScoreSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetHighScore">
+      <soap:operation soapAction="http://tempuri.org/GetHighScore" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommitPlayerScore">
+      <soap:operation soapAction="http://tempuri.org/CommitPlayerScore" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HighScoreSoap12" type="tns:HighScoreSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetHighScore">
+      <soap12:operation soapAction="http://tempuri.org/GetHighScore" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommitPlayerScore">
+      <soap12:operation soapAction="http://tempuri.org/CommitPlayerScore" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HighScore">
+    <wsdl:port name="HighScoreSoap" binding="tns:HighScoreSoap">
+      <soap:address location="http://localhost:51100/HighScore.asmx" />
+    </wsdl:port>
+    <wsdl:port name="HighScoreSoap12" binding="tns:HighScoreSoap12">
+      <soap12:address location="http://localhost:51100/HighScore.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
