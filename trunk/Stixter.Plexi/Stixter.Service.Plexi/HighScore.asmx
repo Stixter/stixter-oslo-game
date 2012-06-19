@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="HighScore.asmx.cs" Class="Stixter.Service.Plexi.HighScore" %>

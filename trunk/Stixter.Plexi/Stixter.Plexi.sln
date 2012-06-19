@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stixter.Plexi.Sprites", "St
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stixter.Plexi.Core", "Stixter.Plexi.Core\Stixter.Plexi.Core.csproj", "{0E6B2135-C4E6-46B6-A8D8-7458EEACCF03}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stixter.Plexi.Service", "Stixter.Plexi.Service\Stixter.Plexi.Service.csproj", "{2FEF471B-4B50-4CC3-AC60-93ADEC768626}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stixter.Service.Plexi", "Stixter.Service.Plexi\Stixter.Service.Plexi.csproj", "{401F6C37-84EA-4694-94C4-BEDFE32821F9}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -71,6 +75,26 @@ Global
 		{0E6B2135-C4E6-46B6-A8D8-7458EEACCF03}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{0E6B2135-C4E6-46B6-A8D8-7458EEACCF03}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{0E6B2135-C4E6-46B6-A8D8-7458EEACCF03}.Release|x86.ActiveCfg = Release|Any CPU
+		{2FEF471B-4B50-4CC3-AC60-93ADEC768626}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{2FEF471B-4B50-4CC3-AC60-93ADEC768626}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{2FEF471B-4B50-4CC3-AC60-93ADEC768626}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{2FEF471B-4B50-4CC3-AC60-93ADEC768626}.Debug|x86.ActiveCfg = Debug|x86
+		{2FEF471B-4B50-4CC3-AC60-93ADEC768626}.Debug|x86.Build.0 = Debug|x86
+		{2FEF471B-4B50-4CC3-AC60-93ADEC768626}.Release|Any CPU.ActiveCfg = Release|x86
+		{2FEF471B-4B50-4CC3-AC60-93ADEC768626}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{2FEF471B-4B50-4CC3-AC60-93ADEC768626}.Release|Mixed Platforms.Build.0 = Release|x86
+		{2FEF471B-4B50-4CC3-AC60-93ADEC768626}.Release|x86.ActiveCfg = Release|x86
+		{2FEF471B-4B50-4CC3-AC60-93ADEC768626}.Release|x86.Build.0 = Release|x86
+		{401F6C37-84EA-4694-94C4-BEDFE32821F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{401F6C37-84EA-4694-94C4-BEDFE32821F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{401F6C37-84EA-4694-94C4-BEDFE32821F9}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{401F6C37-84EA-4694-94C4-BEDFE32821F9}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{401F6C37-84EA-4694-94C4-BEDFE32821F9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{401F6C37-84EA-4694-94C4-BEDFE32821F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{401F6C37-84EA-4694-94C4-BEDFE32821F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{401F6C37-84EA-4694-94C4-BEDFE32821F9}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{401F6C37-84EA-4694-94C4-BEDFE32821F9}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{401F6C37-84EA-4694-94C4-BEDFE32821F9}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

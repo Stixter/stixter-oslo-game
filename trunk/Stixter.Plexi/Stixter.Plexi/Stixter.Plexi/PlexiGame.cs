@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Stixter.Plexi.Core;
 using Stixter.Plexi.ScreenManager.GameScreens;
+using Stixter.Plexi.Service.HighScoreService;
 
 namespace Stixter.Plexi
 {
@@ -116,6 +117,7 @@ namespace Stixter.Plexi
                     {
                         _menuClickSelected.Play();
                         _gameOverScreen.IshighScore = true;
+                        _gameOverScreen.GetHighScoreFromLeaderBoard();
                         SetActiveScreen(_gameOverScreen);
                     }
                     if(_startScreen.SelectedIndex == 2)
@@ -132,6 +134,12 @@ namespace Stixter.Plexi
                     _gameIsOn = false;
                     MediaPlayer.IsRepeating = false;
                     MediaPlayer.Play(_dead);
+                    
+                   
+                    _gameOverScreen.GetHighScoreFromLeaderBoard();
+
+                   
+
                     SetActiveScreen(_gameOverScreen);
                     _gameOverScreen.SetScoreText();
                 }
