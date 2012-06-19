@@ -35,7 +35,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             var lastPlatform = CreateRandomPlatform(y, x);
             for(var i = 0; i<numberOfPlatforms; i++)
             {
-                y = lastPlatform.GetPostionY() - (50 + _random.Next(0, 20));
+                y = lastPlatform.GetPostionY() - (52 + _random.Next(0, 20));
                 x = x + (lastPlatform.GetLength()*100);
                 if (x > 900)
                     x = 0;

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Stixter.Plexi.Core;
 
 namespace Stixter.Plexi.Sprites.Sprites
 {

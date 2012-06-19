@@ -11,7 +11,9 @@ namespace Stixter.Plexi.Sprites.Sprites
         public enum State { Walking, Jumping }
         public State PlayerState;
         public AnimatedSprite Sprite;
-
+        public TimeSpan Age;
+        public TimeSpan BornTime;
+        public bool IsDeadly, IsBorn;
         private readonly GraphicsDevice _graphicsDevice;
         private double _currentTimer;
         private double _startJumpTime;
@@ -34,6 +36,8 @@ namespace Stixter.Plexi.Sprites.Sprites
    
         public Character(Game game, string texture) : base(game)
         {
+            IsBorn = false;
+            IsDeadly = false;
             _texture = texture;
             _screenText = new ScreenText(Game);
             var graphicsDeviceService = Game.Services.GetService(typeof(IGraphicsDeviceService)) as IGraphicsDeviceService;
@@ -123,7 +127,20 @@ namespace Stixter.Plexi.Sprites.Sprites
 
         public void UpdatePlayer(GameTime gameTime)
         {
-            Sprite.UpdateSprite(gameTime, CurrentPlayerDirection);
+            if (!IsBorn)
+            {
+                BornTime = gameTime.TotalGameTime;
+                IsBorn = true;
+            }
+            Age = gameTime.TotalGameTime;
+            DebugText = "Age: " + Age.Ticks + " Born: " + BornTime.Ticks;
+            var time = BornTime.Add(new TimeSpan(0, 0, 3));
+            if(Age > time)
+            {
+                IsDeadly = true;
+            }
+            Sprite.UpdateSprite(gameTime, CurrentPlayerDirection, GetType() != typeof (Enemy) || IsDeadly);
+
             SpritePosition.KeepSpriteOnScreen(Sprite, _graphicsDevice);
             
             _currentTimer = gameTime.TotalGameTime.TotalSeconds;

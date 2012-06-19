@@ -16,9 +16,10 @@ namespace Stixter.Plexi
         private KeyboardState _keyboardState;
         private GameScreen _activeScreen;
         private StartScreen _startScreen;
+        private GameOverScreen _gameOverScreen;
         private ActionScreen _actionScreen;
         private SoundEffect _menuClickSelected;
-        private Song _gamePlaySong, _menuSong;
+        private Song _gamePlaySong, _menuSong, _dead;
         private bool _gameIsOn;
 
         public PlexiGame()
@@ -29,13 +30,19 @@ namespace Stixter.Plexi
 
         protected override void LoadContent()
         {
-            _gamePlaySong = Content.Load<Song>("Sounds\\cautious-path");
-            _menuSong = Content.Load<Song>("Sounds\\looking-in-the-air");
+            _gamePlaySong = Content.Load<Song>("Sounds\\battle");
+            _menuSong = Content.Load<Song>("Sounds\\menu_song2");
+            _dead = Content.Load<Song>("Sounds\\defeat");
+            MediaPlayer.IsRepeating = true;
             MediaPlayer.Play(_menuSong);
             _menuClickSelected = Content.Load<SoundEffect>("Sounds\\button-25");
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             _gameIsOn = false;
             SetScreenSize();
+
+            _gameOverScreen = new GameOverScreen(this, _spriteBatch, Content.Load<SpriteFont>("menufont"), Content.Load<Texture2D>("gameover_screen"));
+            Components.Add(_gameOverScreen);
+            _gameOverScreen.Hide();
 
             _startScreen = new StartScreen(this, _spriteBatch, Content.Load<SpriteFont>("menufont"), Content.Load<Texture2D>("splash_screen"));
             Components.Add(_startScreen);
@@ -44,8 +51,10 @@ namespace Stixter.Plexi
             _actionScreen = new ActionScreen(this, _spriteBatch, Content.Load<Texture2D>("Levels\\level1_background"));
             Components.Add(_actionScreen);
             _actionScreen.Hide();
-           
-            
+
+            //_activeScreen = _gameOverScreen;
+            //_gameOverScreen.SetScoreText();
+
             _activeScreen = _startScreen;
             _activeScreen.Show();
         }
@@ -67,6 +76,17 @@ namespace Stixter.Plexi
         {
             _keyboardState = Keyboard.GetState();
           
+            if(CheckKey(Keys.F1))
+            {
+                if (!_gameIsOn)
+                {
+                    SetActiveScreen(_startScreen);
+                    _gameIsOn = false;
+                    MediaPlayer.IsRepeating = true;
+                    if(!_gameOverScreen.IshighScore)
+                        MediaPlayer.Play(_menuSong);
+                }
+            }
             if (CheckKey(Keys.Escape))
                 Exit();
 
@@ -79,25 +99,26 @@ namespace Stixter.Plexi
             {
                 if (CheckKey(Keys.Enter))
                 {
-                    
                     if (_startScreen.SelectedIndex == 0)
                     {
                         _gameIsOn = true;
                         _menuClickSelected.Play();
                         _actionScreen.ResetGame();
+                        _gameOverScreen.IshighScore = false;
+                        GameTimerHandler.TotalGameTime = 0;
                         GameTimerHandler.LastGameStartTime = (int)gameTime.TotalGameTime.TotalSeconds;
+                        MediaPlayer.IsRepeating = true;
                         MediaPlayer.Play(_gamePlaySong);
                         SetActiveScreen(_actionScreen);
                     }
+                   
                     if (_startScreen.SelectedIndex == 1)
                     {
                         _menuClickSelected.Play();
+                        _gameOverScreen.IshighScore = true;
+                        SetActiveScreen(_gameOverScreen);
                     }
-                    if (_startScreen.SelectedIndex == 2)
-                    {
-                        _menuClickSelected.Play();
-                    }
-                    if(_startScreen.SelectedIndex == 3)
+                    if(_startScreen.SelectedIndex == 2)
                     {
                         Exit();
                     }
@@ -109,13 +130,12 @@ namespace Stixter.Plexi
                 if (_gameIsOn)
                 {
                     _gameIsOn = false;
-                    MediaPlayer.Play(_menuSong);
-                    SetActiveScreen(_startScreen);
-                    _startScreen.SetScoreText();
+                    MediaPlayer.IsRepeating = false;
+                    MediaPlayer.Play(_dead);
+                    SetActiveScreen(_gameOverScreen);
+                    _gameOverScreen.SetScoreText();
                 }
             }
-
-            
 
             base.Update(gameTime);
             _oldKeyboardState = _keyboardState;

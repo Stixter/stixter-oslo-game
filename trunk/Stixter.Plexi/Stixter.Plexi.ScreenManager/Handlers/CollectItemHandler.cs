@@ -15,6 +15,7 @@ namespace Stixter.Plexi.ScreenManager.Handlers
         private readonly int _numberOfPickUpItems;
         private Game _game;
         private SoundEffect _soundEffect;
+        private SoundEffect _success;
 
         public CollectItemHandler()
         {
@@ -25,6 +26,7 @@ namespace Stixter.Plexi.ScreenManager.Handlers
         {
             _game = game;
             _soundEffect = game.Content.Load<SoundEffect>("Sounds\\coin-drop-4");
+            _success = game.Content.Load<SoundEffect>("Sounds\\success");
         }
 
         public void CreatePickUpItems()
@@ -74,6 +76,7 @@ namespace Stixter.Plexi.ScreenManager.Handlers
         private void PickUpAction(PickUpItem pickUpItem)
         {
             _soundEffect.Play();
+            _success.Play();
             ScoreHandler.AddPoint();
             pickUpItem.Sprite.Alive = false;
         }

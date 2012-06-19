@@ -1,23 +1,26 @@
 ﻿using System;
 using System.Threading;
 
-public static class RandomHelper
+namespace Stixter.Plexi.Core
 {
-    private static int seedCounter = new Random().Next();
-
-    [ThreadStatic]
-    private static Random rng;
-
-    public static Random Instance
+    public static class RandomHelper
     {
-        get
+        private static int _seedCounter = new Random().Next();
+
+        [ThreadStatic]
+        private static Random _random;
+
+        public static Random Instance
         {
-            if (rng == null)
+            get
             {
-                int seed = Interlocked.Increment(ref seedCounter);
-                rng = new Random(seed);
+                if (_random == null)
+                {
+                    int seed = Interlocked.Increment(ref _seedCounter);
+                    _random = new Random(seed);
+                }
+                return _random;
             }
-            return rng;
         }
     }
 }
