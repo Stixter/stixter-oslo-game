@@ -16,14 +16,13 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
 {
     public class ActionScreen : GameScreen
     {
-        private KeyboardState _keyboardState;
+        private KeyboardState _keyboardState, _oldKeyboardState;
         private readonly Texture2D _image;
         private readonly Rectangle _imageRectangle;
         private readonly InformationPanel _informationPanel;
         private Player _player;
         private DeadCharacter _deadCharacter;
         private List<Platform> _platforms;
-        private KeyboardState _oldKeyboardState;
         private readonly SoundEffect _playerDies;
         private readonly ICollectItemHandler _collectItemHandler;
         private readonly ICloudHandler _cloudHandler;
@@ -70,7 +69,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
 
         public override void Update(GameTime gameTime)
         {
-            GameTimerHandler.TotalGameTime = (int)gameTime.TotalGameTime.TotalSeconds;
+            GameTimerHandler.TotalGameTime = (int) gameTime.TotalGameTime.TotalSeconds;
 
             _cloudHandler.Update(gameTime);
      
@@ -156,8 +155,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         public override void Draw(GameTime gameTime)
         {
             SpriteBatch.Draw(_image, _imageRectangle, Color.White);
-            
-            _informationPanel.Draw(SpriteBatch);
+
             _cloudHandler.Draw(SpriteBatch);
 
             DrawAllPlatforms();
@@ -165,7 +163,7 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
 
             _enemiesHandler.Draw(gameTime, SpriteBatch);
             _collectItemHandler.DrawAllItems(SpriteBatch);
-           
+            _informationPanel.Draw(SpriteBatch);
             base.Draw(gameTime);
         }
 
@@ -190,8 +188,8 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         {
             GameTimerHandler.TotalGameTime = 0;
             _player.Reset();
-
             _enemiesHandler.Reset();
+           
 
             BuildPlatforms();
 

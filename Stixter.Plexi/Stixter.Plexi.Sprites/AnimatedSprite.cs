@@ -34,7 +34,7 @@ namespace Stixter.Plexi.Sprites
             Alive = false;
         }
 
-        public Rectangle UpdateSprite(GameTime gameTime, PlayerDirection direction)
+        public Rectangle UpdateSprite(GameTime gameTime, PlayerDirection direction, bool isDeadly)
         {
             Timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
             if (Timer > Interval)
@@ -60,6 +60,8 @@ namespace Stixter.Plexi.Sprites
                         if (_playerPosition.Equals(0))
                         {
                             SourceRect = new Rectangle(positionOne, directionCord, SpriteWidth, SpriteHeight);
+                            if (!isDeadly)
+                                SourceRect = new Rectangle(0, 0, 0, 0);
                         }
                         if (_playerPosition.Equals(1))
                         {
@@ -68,6 +70,8 @@ namespace Stixter.Plexi.Sprites
                         if (_playerPosition.Equals(2))
                         {
                             SourceRect = new Rectangle(positionThree, directionCord, SpriteWidth, SpriteHeight);
+                            if (!isDeadly)
+                                SourceRect = new Rectangle(0, 0, 0, 0);
                         }
                         if (_playerPosition.Equals(3))
                         {

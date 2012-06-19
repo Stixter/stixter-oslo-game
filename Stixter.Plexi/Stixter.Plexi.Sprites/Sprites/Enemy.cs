@@ -5,8 +5,8 @@ namespace Stixter.Plexi.Sprites.Sprites
 {
     public class Enemy : Character
     {
-        private Random _random;
-        private float _startPosition;
+        private readonly Random _random;
+        private readonly float _startPosition;
 
         public Enemy(Game game, string texture, float startPosition, Random random) : base(game, texture)
         {

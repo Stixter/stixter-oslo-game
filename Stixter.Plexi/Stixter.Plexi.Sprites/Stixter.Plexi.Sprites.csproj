@@ -96,6 +96,7 @@
     <Compile Include="GameSprite.cs" />
     <Compile Include="Helpers\SpritePosition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sprites\BlinkText.cs" />
     <Compile Include="Sprites\Cloud.cs" />
     <Compile Include="Sprites\DeadCharacter.cs" />
     <Compile Include="Sprites\Enemy.cs" />

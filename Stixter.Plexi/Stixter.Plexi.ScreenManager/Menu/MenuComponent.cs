@@ -1,11 +1,8 @@
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Stixter.Plexi.Sprites;
 using Stixter.Plexi.Sprites.Sprites;
 
 namespace Stixter.Plexi.ScreenManager.Menu
@@ -14,18 +11,16 @@ namespace Stixter.Plexi.ScreenManager.Menu
     {
         private readonly List<MenuItems.MenuItem> _menuItems;
         private int _selectedIndex;
-        private int _lastSelectedIndex;
-        private Color _notSelectedColor = Color.Yellow;
-        private Color _slectedColor = Color.Orange;
+        private readonly Color _notSelectedColor = Color.Yellow;
+        private readonly Color _slectedColor = Color.Orange;
         private KeyboardState _keyboardState;
         private KeyboardState _oldKeyboardState;
         private readonly SpriteBatch _spriteBatch;
         private readonly SpriteFont _spriteFont;
         private Vector2 _position;
-        private float _width = 0f;
-        private float _height = 0f;
-        private ContentManager _contentManager;
-        private MenuBackgroundItem _menuBackgroundItem;
+        private float _width;
+        private float _height;
+        private readonly MenuBackgroundItem _menuBackgroundItem;
         private readonly SoundEffect _menuChangeSelected;
 
         public int SelectedIndex
@@ -49,10 +44,8 @@ namespace Stixter.Plexi.ScreenManager.Menu
             _spriteBatch = spriteBatch;
             _spriteFont = spriteFont;
             _menuItems = menuItems;
-            _contentManager = game.Content;
             MeasureMenu();
-            _menuBackgroundItem = new MenuBackgroundItem(game.Content);
-            _menuBackgroundItem.Sprite.Alive = true;
+            _menuBackgroundItem = new MenuBackgroundItem(game.Content) {Sprite = {Alive = true}};
         }
 
         private void MeasureMenu()
@@ -70,11 +63,6 @@ namespace Stixter.Plexi.ScreenManager.Menu
             _position = new Vector2(
                 (Game.Window.ClientBounds.Width - _width) / 2, 
                 (Game.Window.ClientBounds.Height - _height) / 2);
-        }
-
-        public override void Initialize()
-        {
-            base.Initialize();
         }
 
         private bool CheckKey(Keys theKey)
@@ -104,7 +92,6 @@ namespace Stixter.Plexi.ScreenManager.Menu
 
             if (CheckKey(Keys.Enter))
             {
-                _lastSelectedIndex = SelectedIndex;
             }
 
             base.Update(gameTime);
@@ -113,8 +100,6 @@ namespace Stixter.Plexi.ScreenManager.Menu
 
         public override void Draw(GameTime gameTime)
         {
-            
-
             base.Draw(gameTime);
 
             var location = _position;
@@ -141,8 +126,6 @@ namespace Stixter.Plexi.ScreenManager.Menu
                 boxLocation.Y += _spriteFont.LineSpacing + 30;
                 
             }
-        }
-
-       
+        }      
     }
 }

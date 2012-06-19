@@ -6,7 +6,6 @@ using System.Threading;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Stixter.Plexi.Core;
 using Stixter.Plexi.ScreenManager.Menu;
 using Stixter.Plexi.Sprites.Sprites;
 
@@ -19,8 +18,6 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
         private readonly Rectangle _imageRectangle;
         private List<Platform> _platforms;
         private List<Enemy> _enemies;
-        private ScreenText _resultText;
-        private string _result;
 
         public StartScreen(Game game, SpriteBatch spriteBatch, SpriteFont spriteFont, Texture2D image)
             : base(game, spriteBatch)
@@ -28,15 +25,13 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             var menuItems = new List<MenuItems.MenuItem>
                                     {
                                         MenuItems.MenuItem.StartGame, 
-                                        MenuItems.MenuItem.Help, 
+                                        //MenuItems.MenuItem.Help, 
                                         MenuItems.MenuItem.HighScore, 
                                         MenuItems.MenuItem.EndGame
                                     };
 
             _menuComponent = new MenuComponent(game, spriteBatch, spriteFont, menuItems);
 
-            _resultText = new ScreenText(game);
-            _resultText.SetPosition(1000, 30);
             Components.Add(_menuComponent);
             BuildPlatforms();
             CreateEnemies(game);
@@ -53,7 +48,9 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             {
                 start += 150;
                 Thread.Sleep(20);
-                _enemies.Add(new Enemy(game, "Sprites\\enemy_move", start, new Random()));
+                var enemy = new Enemy(game, "Sprites\\enemy_move", start, new Random());
+                enemy.IsDeadly = true;
+                _enemies.Add(enemy);
             }
         }
 
@@ -97,20 +94,10 @@ namespace Stixter.Plexi.ScreenManager.GameScreens
             base.Update(gameTime);
         }
 
-        public void SetScoreText()
-        {
-            _result = "Last game result: " + ScoreHandler.TotalScore;
-        }
-
         public override void Draw(GameTime gameTime)
         {
             SpriteBatch.Draw(_image, _imageRectangle, Color.White);
             DrawAllPlatforms();
-
-            if (!string.IsNullOrEmpty(_result))
-            {
-                _resultText.Draw(SpriteBatch, _result);
-            }
 
             foreach (var enemy in _enemies)
             {

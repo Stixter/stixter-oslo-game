@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Stixter.Plexi.Core;
 using Stixter.Plexi.Sprites.Sprites;
@@ -16,9 +16,11 @@ namespace Stixter.Plexi.ScreenManager.Handlers
         private bool _isOkToAddNewEnemy = false;
         private int _lastEnemyAdded = 0;
         private const int NewEnemyRate = 10;
+        private readonly SoundEffect _newEnemySound;
 
         public EnemiesHandler(Game game) : base(game)
         {
+            _newEnemySound = game.Content.Load<SoundEffect>("Sounds\\newenemy");
             _enemies = new List<Enemy>();
             CreateEnemies();
             _isOkToAddNewEnemy = false;
@@ -43,19 +45,17 @@ namespace Stixter.Plexi.ScreenManager.Handlers
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-
-            if (GameTimerHandler.TotalGameTime % NewEnemyRate == 0)
+            if (GameTimerHandler.CurrentGameTime % NewEnemyRate == 0)
             {
                 if (_isOkToAddNewEnemy)
                 {
                     AddEnemy();
-                    
-                    _lastEnemyAdded = GameTimerHandler.TotalGameTime;
+                    _newEnemySound.Play();
+                    _lastEnemyAdded = GameTimerHandler.CurrentGameTime;
                     _isOkToAddNewEnemy = false;
                 }
-                if (GameTimerHandler.TotalGameTime != _lastEnemyAdded)
+                if (GameTimerHandler.CurrentGameTime != _lastEnemyAdded)
                     _isOkToAddNewEnemy = true;
-
             }
 
             foreach (var enemy in _enemies)
@@ -69,15 +69,12 @@ namespace Stixter.Plexi.ScreenManager.Handlers
         {
             _lastEnemyAdded = 0;
             _enemies.Clear();
-            CreateEnemies();
-            //foreach (var enemy in _enemies)
-            //    enemy.Reset();
-            
+            CreateEnemies();            
         }
 
         public bool CheckIfEnemiesKills(Rectangle objectToKill)
         {
-            return _enemies.Any(enemy => enemy.CharacterKillingHit().Intersects(objectToKill));
+            return _enemies.Any(enemy => enemy.CharacterKillingHit().Intersects(objectToKill) && enemy.IsDeadly);
         }
 
         private void CreateEnemies()
@@ -86,7 +83,6 @@ namespace Stixter.Plexi.ScreenManager.Handlers
             for (var i = 0; i < NumberOfEnemies; i++)
             {
                 start += 150;
-                Thread.Sleep(20); //TODO FIXA!
                 _enemies.Add(new Enemy(Game, "Sprites\\enemy_move", start, new Random()));
             }
         }
